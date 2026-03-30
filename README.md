@@ -58,3 +58,47 @@ Once the database is imported, you can launch the application by visiting the UR
 
 ![DoFirstLah Landing Page](/images/landing_page.png)
 
+## 📸 Application Preview
+
+### 1. Authentication & Personal Space
+Login Page
+The entry point of the application featuring a clean, responsive design with "Remember Me" and password recovery options to ensure a smooth user experience.
+![Login Preview](/images/login_preview.png)
+
+User Dashboard
+A personalized command center where users can manage their individual schedule via a dynamic calendar, track daily events, and check active reminders.
+![User Dashboard Preview](/images/user_dashboard_preview.png)
+
+---
+
+2. Workspace Management
+My Hustle
+The project hub where users can view all ongoing individual and group projects, or instantly create and join new ones using invite codes.
+![My Hustle Preview](/images/myHustle_preview.png)
+
+Project Summary
+A comprehensive overview of a specific project, displaying real-time task analytics, workload distribution among members, and overall goal progress.
+![Project Summary Preview](/images/project_summary_preview.png)
+
+---
+
+3. Team & Task Operations
+Project Members
+A dedicated management interface to view involved members, handle pending invitations, and assign specific roles like Team Leader or Project Manager.
+![Project Member Preview](/images/project_member_preview.png)
+
+Project Tasks
+The primary kanban-style board categorized by "Haven't Touch Yet," "On The Way," and "Settled" to track task progression visually.Task Detail Dialog
+An interactive pop-up for deep-diving into specific tasks, allowing for subtask management, priority setting, file submissions, and activity history tracking.
+![Project Tasks Preview](/images/project_tasks_preview.png)
+
+---
+
+4. Advanced Visualization
+Project Gantt Chart
+A high-level timeline view that allows team members to visualize project schedules and dynamically adjust task durations and deadlines.
+![User Dashboard Preview](/images/project_gannt_chart_preview.png)
+
+Project Attachments
+A centralized repository for all project-related final work, organized by task with integrated preview and download capabilities.
+![User Dashboard Preview](/images/project_attachments_preview.png)
