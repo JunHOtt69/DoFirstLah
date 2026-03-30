@@ -18,6 +18,7 @@ Open your terminal or command prompt, navigate to your XAMPP `htdocs` directory,
 ```bash
 cd C:\xampp\htdocs
 git clone [https://github.com/JunHOtt69/DoFirstLah.git](https://github.com/JunHOtt69/DoFirstLah.git)
+```
 
 ### 3. Start XAMPP Services
 - Open the XAMPP Control Panel.
@@ -27,6 +28,7 @@ git clone [https://github.com/JunHOtt69/DoFirstLah.git](https://github.com/JunHO
 - Click Start next to MySQL.
 
 4. Database Configuration
+
 In your web browser, go to: http://localhost/phpmyadmin/.
 
 Click the New button on the left sidebar to create a new database.
@@ -37,8 +39,9 @@ Select the newly created database and click the Import tab at the top.
 
 Click Choose File and navigate to:
 
-
+```bash
 C:\xampp\htdocs\DoFirstLah\Database\dofirstlah.sql 
+```
 
 Scroll to the bottom and click Import.
 
