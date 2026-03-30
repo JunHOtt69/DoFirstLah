@@ -57,3 +57,4 @@ Once the database is imported, you can launch the application by visiting the UR
 👉 http://localhost/DoFirstLah/1-landing_page.php
 
 ![DoFirstLah Landing Page](/images/landing_page.png)
+
