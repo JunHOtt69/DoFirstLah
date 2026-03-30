@@ -76,6 +76,7 @@ A personalized command center where users can manage their individual schedule v
 
 My Hustle
 The project hub where users can view all ongoing individual and group projects, or instantly create and join new ones using invite codes.
+
 ![My Hustle Preview](/images/myHustle_preview.png)
 
 Project Summary
