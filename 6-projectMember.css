@@ -1,0 +1,616 @@
+.rightCtnPanel{
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.panel1{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+    flex: 0 0 16vw;
+    height: auto;
+    padding: 1vw 1.3vw 0.5vw 2vw;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.panel1Header{
+    display: flex;
+    flex-direction: column;
+    gap: 0vw;
+}
+
+.panel1 #inviteCode{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.panel1 #inviteCode button{
+    background-color: transparent;
+    border: none;
+    /* background-color: blue; */
+    width: 1.5vw;
+    height: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.panel1 #inviteCode svg{
+    width: 2vw;
+    height: 2vw;
+    position: relative;
+    left: -0.15vw;
+    top: 0.05vw;
+    stroke-width: 1;
+    fill: rgba(var(--secondary-color), 1);
+}
+
+.panel1 #inviteCode path{
+    transform: translate(0, 0);
+    transition: transform 0.2s;
+}
+
+.panel1 #inviteCode button:hover .path1{
+    transform: translate(-0.15vw, 0.15vw);
+}
+
+.panel1 #inviteCode button:hover .path2{
+    transform: translate(0.15vw, -0.15vw);
+}
+
+.inputWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.inputWrapper input{
+    width: 100%;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1.2vw;
+    outline: none;
+    border: none;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+    background-color: transparent;
+    text-align: left;
+    
+}
+
+.suggestionPopUps{
+    position: absolute;
+    width: 11.3vw;
+    height: auto;
+    max-height: 25vw;
+    left: 14.1vw;
+    top: 16.7vw;
+    z-index: 1;
+    background-color: rgba(var(--primary-color), 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom-left-radius: 0.5vw;
+    border-bottom-right-radius: 0.5vw;
+    overflow: hidden;
+    overflow-y: auto;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s;
+}
+
+.suggestionPopUps.show{
+    transform: scaleY(1);
+}
+
+.suggestionPopUps .member{
+    padding: 0.2vw 0.5vw;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1fr;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.suggestionPopUps .member:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.suggestionPopUps .member::before{
+    content: var(--avatar-name);
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--avatar-color);
+    height: 1.5vw;
+    width: 1.5vw;
+    top: 0;
+    left: 0;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: var(--p-fontsize);
+}
+
+.suggestionPopUps .member::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+}
+
+.suggestionPopUps .member .name,
+.suggestionPopUps .member .email{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestionPopUps .member .name{
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.suggestionPopUps .member .email{
+    color: rgba(var(--tertiary-color), 0.8);
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.sendBtn, .removeBtn{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 1.8vw;
+    cursor: pointer;
+}
+
+.sendBtn svg, 
+.removeBtn svg{
+    width: 100%;
+    height: 100%;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    fill: rgba(var(--tertiary-color), 0);
+    stroke: rgba(var(--tertiary-color), 1);
+    transition: fill 0.1s, stroke 0.1s;
+}
+
+.sendBtn:hover svg{
+    fill: rgba(var(--tertiary-color), 0.8);
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.removeBtn{
+    width: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.removeBtn::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--secondary-color), 0.1);
+    transform: scale(0);
+    transition: transform 0.1s;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.removeBtn:hover::after{
+    transform: scale(1);
+}
+
+.pending{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 2vw;
+    overflow: hidden;
+    min-height: 0;
+    flex: 1;
+}
+
+.pendingWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    /* background-color: blue; */
+    width: 100%;
+    gap: 1vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    padding-right: 0.3vw;
+}
+
+.member{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.memberName{
+    display: block;
+    text-align: left;
+    padding-left: 2.5vw;
+    width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member::before{
+    content: var(--avatar-name);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: var(--avatar-color);
+    height: 2vw;
+    width: 2vw;
+    left: 0;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: var(--p-fontsize);
+}
+
+.panel2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+    flex: 1;
+    height: 100%;
+    padding: 1vw 1.7vw 2vw 2vw;
+}
+
+.panel2Header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1vw;
+}
+
+.searchBar{
+    display: flex;
+    gap: 1vw;
+    width: max-content;
+    background-color: rgba(var(--primary-color), 0.5);
+    padding: 0.5vh 1vw 0.5vh 0.8vw;
+    border-radius: 100vw;
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0);
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.searchBar::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 100vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.searchBar:focus-within{
+    background-color: rgba(var(--primary-color), 1);
+    box-shadow: 0.06vw 0.15vw 0.25vw rgba(0, 0, 0, 0.15);
+}
+
+.searchBar input{
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1.2vw;
+    outline: none;
+}
+
+.searchBar svg{
+    width: 1.2vw;
+    fill: none; 
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    cursor: pointer;
+}
+
+.searchBar .closeBtn{
+    position: relative;
+    top: 0.1vw;
+    width: 1vw;
+    height: 2vw;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 2vw;
+}
+
+.table{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.tableHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+    padding-left: 3.5vw;
+    gap: 0;
+    padding-right: 1.3vw;
+}
+
+.attribute{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    font-size: 1.2vw;
+}
+
+.attribute svg{
+    width: 1.5vw;
+    fill: none; 
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    cursor: pointer;
+}
+
+.nameAttribute{
+    width: 25%;
+}
+
+.member p{
+    font-size: 0.9vw;
+    transition: color 0.2s, font-size 0.2s;
+}
+
+.member p:hover{
+    font-size: 1vw;
+    color: rgba(var(--tertiary-color), 1);
+}
+
+.roleAttribute, .member .role{
+    width: 15%;
+}
+
+.member .role{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    position: relative;
+}
+
+.member .role p{
+    flex: 0 0 calc(100% - 1vw);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.member .role .toggleRoleBtn{
+    background-color: transparent;
+    border: none;
+    width: 1vw;
+    height: 1vw;
+    position: relative;
+    top: 0.1vw;
+    /* background-color: blue; */
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggleRoleBtn svg{
+    width: 0.8vw;
+    height: 0.8vw;
+    transform: rotate(180deg);
+    stroke-width: 2;
+    stroke: rgba(var(--tertiary-color), 1);
+}
+
+.rolePopups{
+    position: absolute;
+    background-color: rgba(var(--primary-color), 1);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-bottom-left-radius: 0.5vw;
+    border-bottom-right-radius: 0.5vw;
+    overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s;
+    box-shadow: 0.1vw 0.2vw 0.3vw rgba(var(--secondary-color), 0.15);
+}
+
+.rolePopups.show{
+    transform: scaleY(1);
+}
+
+.rolePopups .option{
+    padding: 0.5vh 1vw;
+    width: 100%;
+    cursor: pointer;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    font-size: var(--p-fontsize);
+}
+
+.rolePopups .option:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.statusAttribute, .member .status{
+    width: 15%;
+}
+
+.ctAttribute, .member .currentTask{
+    width: 30%;
+}
+
+.ddAttribute, .member .taskDueDate{
+    width: 15%;
+}
+
+.tableContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* background-color: blue; */
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.tableContent .memberName{
+    padding-left: 0;
+    width: 25%;
+}
+
+.tableContent .member::before{
+    left: 1vw;
+}
+
+.tableContent .member{
+    padding: 1vw 0 1vw 4vw;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    cursor: pointer;
+    gap: 1vw;
+    align-items: center;
+}
+
+.tableContent .member:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.tableContent .member .taskDueDate,
+.member .currentTask{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.tableContent::-webkit-scrollbar,
+.suggestionPopUps::-webkit-scrollbar,
+.pendingWrapper::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.tableContent::-webkit-scrollbar-track,
+.suggestionPopUps::-webkit-scrollbar-track,
+.pendingWrapper::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+
+.tableContent::-webkit-scrollbar-thumb,
+.suggestionPopUps::-webkit-scrollbar-thumb,
+.pendingWrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.tableContent:hover::-webkit-scrollbar-track,
+.suggestionPopUps:hover::-webkit-scrollbar-track,
+.pendingWrapper:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.tableContent:hover::-webkit-scrollbar-thumb,
+.suggestionPopUps:hover::-webkit-scrollbar-thumb,
+.pendingWrapper:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.member .deleteBtn{
+    width: 1.3vw;
+    height: 1.3vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.2vw;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.member .deleteBtn svg{
+    width: 1.3vw;
+    height: 1.3vw;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 0.5);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.member .deleteBtn:hover svg{
+    stroke-width: 2;
+    stroke: var(--overdue-color);
+}

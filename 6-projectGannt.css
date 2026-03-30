@@ -1,0 +1,751 @@
+.ganntChart{
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1vw 1.7vw 2vw 2vw;
+}
+
+.ganntWrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* background-color: rgba(var(--primary-color), 1); */
+    border-radius: 0.7vw;
+    padding-left: 0.7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+}
+
+.ganntHeaderPanel{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    overflow: hidden;
+    width: 100%;
+    border: none;
+    /* background-color: red; */
+    border-bottom: 0.15vw solid rgba(var(--tertiary-color), 0.6);
+    /* margin-top: 0.3vw; */
+    height: 3vw;
+    position: relative;
+}
+
+.taskHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 10vw;
+    width: 15vw;
+    max-width: 25vw;
+    font-size: var(--h4-fontsize);
+    gap: 0.3vw;
+    border: none;
+    padding-left: 0.5vw;
+}
+
+.taskHeader svg{
+    width: 1.5vw;
+    fill: none; 
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    cursor: pointer;
+}
+
+.taskPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 10vw;
+    width: 15vw;
+    max-width: 25vw;
+    font-size: var(--h4-fontsize);
+    padding-top: 0.2vw;
+    gap: 0.2vw;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 28.3vw;
+    padding-bottom: 0.1vw;
+}
+
+.timelineHeader::-webkit-scrollbar,
+.timelineBody::-webkit-scrollbar,
+.taskPanel::-webkit-scrollbar{
+    -webkit-appearance: none;
+    height: 0;
+}
+
+.chartContent::-webkit-scrollbar{
+    height: 0.3vw;
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.chartContent::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.chartContent::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.chartContent:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.chartContent:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.ganntBodyPanel{
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 15vw 0.15vw 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+}
+
+
+.ganntBodyPanel .ganntResizer,
+.ganntHeaderPanel .ganntResizer{
+    position: relative;
+    width: 0.15vw;
+    height: 100%;
+    background-color: rgba(var(--tertiary-color), 0.6);
+    cursor: col-resize;
+}
+
+.chart{
+    height:100%;
+    min-width: 0;
+    flex: 1;
+    gap: 0.5vw;
+    position: relative;
+    background-color: rgba(var(--primary-color), 1);
+}
+
+.ganntTask{
+    padding-left: 0.5vw;
+    width: 95%;
+    background-color: rgba(var(--secondary-color), 0);
+    /* height: 2.3vw; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    flex: 0 0 2.3vw;
+}
+
+.ganntTask:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.ganntTask p{
+    font-size: var(--h4-fontsize);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ganntBodyPanel .createTask{
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 0.5vw;
+    border: 0.15vw solid rgba(var(--secondary-color), 0);
+    background-color: rgba(var(--secondary-color), 0.1);
+    transition: border 0.2s, height 0.1s, background-color 0.2s;
+    padding-right: 0.5vw;
+    position: relative;
+    padding: 0.5vh 0vw;
+}
+
+.createTask:has(.state1:hover){
+    background-color: rgba(var(--secondary-color), 0.3);
+}
+
+.ganntBodyPanel .createTask.active{
+    background-color: rgba(var(--tertiary-color), 0.3);
+    border: 0.15vw solid rgba(var(--secondary-color), 1);
+    min-height: 4.2vw;
+}
+
+.ganntBodyPanel .createTask .state1.hide,
+.ganntBodyPanel .createTask .state2.hide{
+    display: none;
+}
+
+.ganntBodyPanel .createTask .state1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 0.5vw;
+    cursor: pointer;
+}
+
+.ganntBodyPanel .state1 svg, 
+.ganntBodyPanel .createTaskCategory svg{
+    fill: none; 
+    width: 1.5vw;
+    stroke-width: 1;
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.ganntBodyPanel .createTask .state2{
+    width: 100%;
+    height: auto;
+    border-radius: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0.5vw;
+    position: relative;
+    z-index: 1;
+    /* background-color: red; */
+}
+
+.ganntBodyPanel .createTask .state2 .inputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 0.5vw;
+    gap: 0.3vw;
+}
+
+.ganntBodyPanel .createTask .state2 .inputWrapper input{
+    width: 90%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: var(--h4-fontsize);
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+}
+
+.ganntBodyPanel .createTask .state2 .inputWrapper p{
+    color: rgba(var(--tertiary-color), 1);
+    padding-right: 0.6vw;
+}
+
+.ganntBodyPanel .confirmBtn{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 1.6vw;
+    height: 1.6vw;
+    border: none;
+    border-radius: 0.2vw;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: 0.2s;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.ganntBodyPanel .confirmBtn:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.ganntBodyPanel .confirmBtn::before {
+    content: "";
+    position: absolute;
+    top: 0.75vw;
+    left: 0.75vw;
+    width: 0.3vw;
+    height:0.7vw;
+    opacity: 1;
+    transform: translate(-50%, -60%) rotate(45deg);
+    border-right: 0.15vw solid rgba(var(--secondary-color), 1);
+    border-bottom: 0.15vw solid rgba(var(--secondary-color), 1);
+}
+
+.ganntBodyPanel .inputFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timelineHeader{
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scaleCell{
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    /* border-left: 0.2vw solid rgba(var(--tertiary-color), 0.4); */
+    position: relative;
+}
+
+.scaleCell::after{
+    content: '';
+    position: absolute;
+    width: 0.15vw; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.scaleCell .scaleLabel{
+    padding-left: 0.5vw;
+    font-size: var(--h4-fontsize);
+}
+
+.subScaleRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: auto;
+    height: 50%;
+    /* background-color: red; */
+}
+
+.subScaleRow .timeCell{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 0.8vw;
+    color: rgba(var(--secondary-color), 0.8);
+    min-width: 1.5vw;
+    width: 3vw;
+    max-width: 5vw;
+    position: relative;
+}
+
+.subScaleRow .timeCell::after{
+    content: '';
+    position: absolute;
+    width: 0.1vw;
+    height: 100%;
+    left: 0;
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.subScaleRow .rangeStyle:first-child .timeCell:first-child {
+    border-left: none;
+}
+
+.subScaleRow .timeCell.today{
+    font-weight: bold;
+}
+
+.timelineBody{
+    width: calc(100vw - 10vw - 2vw - 3.7vw - 0.7vw - 0.2vw - var(--leftPanelWidth) - var(--taskPanelWidth));
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 0;
+    background-color: rgba(var(--primary-color), 1);
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    transition: width 0.1s;
+}
+
+.timelineHeader .rangeStyle{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rangeStyle.alt { 
+    background: linear-gradient(
+        to top,
+        rgba(var(--tertiary-color), 0.3) 0%,
+        rgba(var(--tertiary-color), 0.2) 70%,
+        rgba(var(--tertiary-color), 0) 100%
+    );
+}
+.rangeStyle:not(.alt) { 
+    background-color: rgba(var(--tertiary-color), 0); 
+}
+
+
+.timelineBody .rangeStyle{
+    flex: 0 0 auto;
+    height: 100%;
+    background-color: rgba(var(--tertiary-color), 0.3);
+    position: relative;
+}
+
+.timelineBody .rangeStyle::after{
+    content: '';
+    width: 0.1vw;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.timelineBody .rangeStyle:nth-child(even){
+    background-color: rgba(var(--tertiary-color), 0);
+}
+
+.ganntRangeButton{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    right: 0.7vw;
+    bottom: 1vw;
+    padding: 1vh 1.2vw 1vh 1vw;
+    gap: 1vw;
+    background-color: rgba(var(--primary-color), 1);
+    border-radius: 0.5vw;
+    z-index: 1;
+    box-shadow: 0.1vw 0.3vw 0.5vw rgba(var(--secondary-color), 0.2);
+}
+
+.scrollTodayButton{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollTodayButton::after{
+    content: '';
+    position: absolute;
+    width: 130%;
+    height: 1.8vw;
+    background-color: rgba(var(--tertiary-color), 0.2);
+    z-index: -1;
+    border-radius: 0.4vw;
+    transition: background-color 0.2s, border 0.2s;
+    border: 0.15vw solid rgba(var(--tertiary-color-hover), 0);
+}
+
+.scrollTodayButton:hover::after{
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.scrollTodayButton.clicked::after{
+    background-color: rgba(var(--tertiary-color), 0.7);
+    border: 0.15vw solid rgba(var(--tertiary-color-hover), 1);
+}
+
+.ganntRangeButton .divisionLine{
+    width: 0.1vw;
+    height: 2vw;
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.ganntRangeButton .selectedShadow{
+    border-radius: 0.4vw;
+    position: absolute;
+    background-color: rgba(var(--tertiary-color), 1);
+    height: 1.8vw;
+    width: 3.2vw;
+    left: 5vw;
+    z-index: -1;
+    transition: width 0.2s, left 0.2s;
+}
+
+.ganntRangeButton .selectedShadow.month{
+    width: 4vw; 
+    left: 8vw;
+}
+
+.ganntRangeButton .selectedShadow.quarter{
+    width: 4.4vw; 
+    left: 11.75vw;
+}
+
+.timeRangeButton,
+.scrollTodayButton{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: var(--h4-fontsize);
+    cursor: pointer;
+}
+
+.timeRangeButton.active{
+    color: rgba(var(--primary-color), 1);
+}
+
+.chartContent{
+    background-color: transparent;
+    width: 100%;
+    height: 28.3vw;
+    position: relative;
+    z-index: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 0.2vw;
+    gap: 0.2vw;
+    padding-bottom: 2.1vw;
+    scroll-behavior: smooth;
+}
+
+.chartContent.createTaskActive{
+    padding-bottom: 4.2vw;
+}
+
+.chartContent .ganntTaskChart{
+    flex: 0 0 2.3vw;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.chartContent .ganntTaskChart .taskChartElement{
+    position: absolute;
+    height: 90%;
+    width: 9vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0.5vw;
+    outline: none;
+}
+
+.taskChartElement:focus,
+.taskChartElement.active{
+    z-index: 1;
+}
+
+.taskChartElement::before{
+    content: "";
+    position: absolute;
+    inset: 0; 
+    border-radius: 0.5vw; 
+    padding: 0; 
+    transition: padding 0.2s;
+}
+
+.taskChartElement::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 0.5vw;
+    z-index: 0;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+}
+
+.taskChartElement:focus::before,
+.taskChartElement.active::before{
+    padding: 0.15vw; 
+    background: linear-gradient(
+        to right, 
+        rgba(var(--tertiary-color), 1) 0%,
+        rgba(var(--tertiary-color), 0) 20%,
+        rgba(var(--tertiary-color), 0) 80%,
+        rgba(var(--tertiary-color), 1) 100%
+    );
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0); 
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1; 
+}
+
+.taskChartElement:focus::after,
+.taskChartElement.active::after{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+
+.taskChartElement .remainingTime{
+    z-index: 1;
+    font-size: var(--p-fontsize);
+    color: rgba(var(--secondary-color), 1);
+    transition: color 0.2s;
+}
+
+.ganntTaskChart:has(.taskChartElement:focus) .remainingTime,
+.ganntTaskChart.active .remainingTime{
+    color: rgba(var(--primary-color), 1);
+}
+
+.ganntTaskChart.active{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.guideLine1, 
+.guideLine2{
+    width: 0;
+    height: 0;
+    border: 0.1vw dashed rgba(var(--tertiary-color), 1);
+    position: absolute;
+    z-index: 999;
+    transition: height 0.2s;
+    cursor: e-resize;
+}
+
+.calendar{
+    position: absolute;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 0.7vw;
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.3);
+    transform: translateY(-1vw) scale(0);
+    transform-origin: top;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.calendar.show{
+    animation: calendarPop 0.25s forwards;
+    pointer-events: auto;
+}
+
+@keyframes calendarPop{
+    0%{
+        transform: translateY(-1vw) scale(0);
+    }
+    60%{
+        transform: translateY(0.1vw) scale(1.05);
+    }
+    100%{
+        transform: translateY(0vw) scale(1);
+    }
+}
+
+.calendarHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3vw;
+}
+
+.monthYear{
+    text-align: center;
+    width: 8vw;
+}
+
+.calendar button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    width: 1.5vw;
+    aspect-ratio: 1/1 ;
+    box-shadow: 0 0 0.1vw rgba(var(--secondary-color), 0.2);
+}
+
+.calendar svg{
+    width: 1vw;
+    fill: none;
+    stroke-width: 1.5; 
+    stroke: currentColor;
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.calendar .days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days .day{
+    text-align: center;
+    padding: 0.1vw;
+    color:rgba(var(--secondary-color), 0.4);
+    width: 2vw;
+}
+
+.calendar .dates{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.1vw;
+}
+
+.calendar .date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.3vw;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1.5vw;
+    aspect-ratio: 1/1;
+    transition: 0.2s;
+    background-color: rgba(var(--secondary-color), 0);
+}
+
+.calendar .date:hover{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.calendar .date.active{
+    background-color: rgba(var(--tertiary-color), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.date.inactive{
+    color: rgba(var(--secondary-color), 0.4);
+}
+
+.date.inactive:hover{
+    color: rgba(var(--tertiary-color), 0.4);
+}
+
+.empty{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(var(--secondary-color), 0.1);
+    border-radius:  0.5vw;
+    width: 95%;
+    height: auto;
+    padding: 0.5vh 0.5vw;
+    color: rgba(var(--secondary-color), 0.6);
+}

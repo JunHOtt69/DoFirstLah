@@ -1,0 +1,266 @@
+.searchBar{
+    display: flex;
+    gap: 1vw;
+    width: max-content;
+    background-color: rgba(var(--primary-color), 0.5);
+    padding: 0.5vh 1.2vw 0.5vh 0.8vw;
+    border-radius: 100vw;
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0);
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-top: -0.5vw;
+}
+
+.searchBar::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 100vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.searchBar:focus-within{
+    background-color: rgba(var(--primary-color), 1);
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0.25);
+}
+
+.searchBar input{
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1.2vw;
+    outline: none;
+}
+
+.searchBar svg{
+    width: 1.2vw;
+    fill: none; 
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+}
+
+.attachmentPanel{
+    min-height: 0;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw 1.7vw 2vw 2vw;
+    gap: 1vw;
+}
+
+.attachmentList{
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.attachmentWrapper{
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+}
+
+.attachmentWrapper::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.attachmentWrapper::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.attachmentWrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.attachmentWrapper:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.attachmentWrapper:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.taskSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.attachments{
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1vw;
+}
+
+.attachments.hide{
+    display: none;
+}
+
+.attachmentCard{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2vw;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 0.7vw;
+}
+
+.sectionHeader h4{
+    cursor: pointer;
+}
+
+.sectionHeader span .redirectToggle{
+    margin-left: -0.7vw;
+    margin-top: 0.3vw;
+    position: relative;
+    width: 1vw;
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 7%;
+    stroke-linecap: round;
+    cursor: pointer;
+    fill: none;
+    flex: 0;
+}
+
+.attachmentCard .downloadIcon{
+    position: absolute;
+    width: 1.5vw;
+    aspect-ratio: 1/1;
+    border: none;
+    outline: none;
+    background-color: rgba(var(--secondary-color),0.7);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    right: 0.5vw;
+    top: 0.5vw;
+    transform: translate(2.1vw, -2.1vw) scale(1.2);
+    box-shadow: 0 0 0 rgba(var(--secondary-color), 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 1;
+}
+
+.attachmentCard:hover .downloadIcon{
+    transform: translate(0, 0) scale(1);
+}
+
+.attachmentCard .downloadIcon svg{
+    width: 1vw;
+    stroke: rgba(var(--primary-color), 1);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+.attachmentCard .downloadIcon:hover{
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.5);
+}
+
+.attachmentCard span, 
+.attachmentCard .noPreview{
+    width: 18.9vw;
+    height: 11.3vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.7vw;
+    position: relative;
+    border: 0.15vw solid rgba(var(--tertiary-color), 1);
+}
+
+.attachmentCard span::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--secondary-color), 0);
+    z-index: 1;
+    transition: background-color 0.2s;
+}
+
+.attachmentCard:hover span::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.attachmentCard span img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.attachmentCard .noPreview img{
+    width: 5vw;
+    object-fit: contain;
+}
+
+.attachmentCardDetail{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attachmentCardDetail p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(var(--tertiary-color), 1);
+    transition: color 0.2s;
+}
+
+.attachmentCardDetail .attachmentName{
+    width: 12vw;
+    text-align: left;
+}
+
+.attachmentCardDetail .attachmentTime{
+    width: 6vw;
+    text-align: right;
+}
+
+.attachmentCard:hover .attachmentCardDetail p{
+    color: rgba(var(--secondary-color), 1)
+}
+
+.attachmentWrapper .empty{
+    width: 100%;
+    height: 100%;
+    border-radius: 1vw;
+    background-color: rgba(var(--secondary-color), 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(var(--secondary-color), 0.6);
+}

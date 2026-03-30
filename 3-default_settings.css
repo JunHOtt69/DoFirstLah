@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+    overflow: hidden;
+    user-select: none;
+    font-family: "Instrument Serif", serif;
+}
+
+h1, h2, h3, h4, h5, p, input, textarea, button{
+    font-family: "Instrument Serif", Serif;
+    font-weight: 400; 
+}
+
+h1{
+    font-size: 5vw;
+}
+
+h2{
+    font-size: 2.7vw;
+}
+
+h3{
+    font-size: 1.67vw;
+}
+
+h4{
+    font-size: 1.2vw;
+}
+
+h5{
+    font-size: 1vw;
+}
+
+p{
+    font-size: 0.9vw;
+}
+
+:root{
+    --done-color: #00D26A;
+    --dialog-color-rgba: 51, 240, 48;
+    --unassigned-color: 248, 220, 113;
+    --unassigned-color-code: #F8DC71;
+    --in-progress-color: #A8CBFF;
+    --overdue-color: #FF3131;
+    --avatar-color1: #A86F61;
+    --avatar-color2: #C7D59F;
+    --avatar-color3: #A3A28F;
+    --avatar-color4: #62929E;
+    --avatar-color5: #EFCB68;
+    --avatar-color6: #E8CCBF;
+    --avatar-color7: #E9D6EC;
+    --avatar-color8: #96BDC6;
+    --avatar-color9: #81968F;
+    --avatar-color10: #A49966;
+    --avatar-color11: #C7C7A6;
+    --avatar-color12: #CE6D8B;
+    --avatar-color13: #CE2D4F;
+    --avatar-color14: #4056F4;
+    --avatar-color15: #E2A0FF;
+    --avatar-color16: #FFC1CF;
+    --avatar-color17: #247BA0;
+    --avatar-color18: #F25F5C;
+    --avatar-color19: #70C1B3;
+    --avatar-color20: #FA9500;
+    --avatar-color21: #EB6424;
+    --avatar-color22: #7C6A0A;
+    --primary-color: 249, 248, 248;
+    --secondary-color: 0, 0, 0;
+    --tertiary-color: 119, 109, 109;
+    --primary-color-hover: 232, 232, 232;
+    --tertiary-color-hover: 79, 72, 72;
+    --hyperlink-color1: 0, 150, 15;
+    --hyperlink-color2: 93, 116, 248;
+    --hyperlink-color2-hover: 36, 66, 234;
+    --input-color: 218, 218, 218;
+    --h1-fontsize: 5vw;
+    --h2-fontsize: 2.7vw;
+    --h3-fontsize: 1.67vw;
+    --h4-fontsize: 1.2vw;
+    --h5-fontsize: 1vw;
+    --p-fontsize: 0.9vw;
+    --mp-h1-fontsize: 5vh;
+    --mp-h2-fontsize: 3.6vh;
+    --mp-h3-fontsize: 2.7vh;
+    --mp-h4-fontsize: 2vh;
+    --mp-p-fontsize: 1.67vh;
+    --tablet-h1-fontsize: 9.5vw;
+    --tablet-h2-fontsize: 5.17vw;
+    --tablet-h3-fontsize: 3.9vw;
+    --tablet-h4-fontsize: 3.2vw;
+    --tablet-p-fontsize: 2.3vw;
+    --leftPanelWidth: 5.2vw;
+    --taskPanelWidth: 15vw;
+}
+
+.wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    filter: blur(0.2vw);
+    background-color: rgba(217, 217, 217, 0.02);
+    z-index: -1;
+}
+
+/* purple */
+.shape1{ 
+    width: 27vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55vw, -30vh);
+}
+
+/* blue */
+.shape2{
+    width: 32vw;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(10vw, -23vh);
+}
+
+/* green */
+.shape3{
+    width: 35vw;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(16vw, 10vh);
+}
+
+/* red */
+.shape4{
+    width: 36vw;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(20vw, -2vh);
+}
+
+/* orange */
+.shape5{
+    width: 46vw;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-20vw, 20vh);
+}
+
+.panel{
+    position: relative;
+    border: none;
+    outline: none;  
+    width: 100%;
+    background: rgba(249, 248, 248, 0.5); 
+    border-radius: 1vw;
+    color: black;
+    overflow: hidden;
+    z-index: 0;
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+    padding: 0.8vw 1.2vw;
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0.25);
+}
+
+.panel::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 1vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(var(--dialog-background), 1) inset;
+    box-shadow: 0 0 0 1000px rgba(var(--dialog-background), 1) inset;
+    -webkit-text-fill-color: rgb(var(--secondary-color)); 
+    transition: background-color 5000s ease-in-out 0s;
+}

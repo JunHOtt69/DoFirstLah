@@ -1,0 +1,1396 @@
+.navbar .myDashboard{
+    text-decoration: underline;
+}
+
+.content{
+    display:flex;
+    padding: 5vh 4.5vw 10vh 7.4vw;
+}
+
+.rightPanel{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    gap: 2vh;
+}
+
+.rightPanel.collapsed{
+    width: 5%;
+}
+
+.resizer{
+    height: 100%;
+    width: 0.7vw;
+    background-color: rgba(249, 248, 248, 0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: col-resize;
+    transition: background-color 0.2s;
+}
+
+.resizer::after{
+    content: '';
+    position:relative;
+    height: 6vh;
+    width: 0.2vw;
+    background-color:rgba(0, 0, 0, 0.25);
+    border-radius: 10vw;
+}
+
+.resizer:hover{
+    background-color: hsl(0, 0%, 91%);
+}
+
+.panel h3{
+    font-style: italic;
+}
+
+.mySchedule{
+    width: 70%;
+    height: 100%;
+    position: relative;
+    padding-right: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.panelHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.panelTitle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+
+.calenderIcon{
+    width: 1.8vw;
+    cursor: pointer;
+}
+
+.calenderIcon path{
+    stroke:black;
+    stroke-width: 0.4vw;
+}
+
+.calenderButtonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5vw;
+}
+
+.scrollTodayButton{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: var(--h4-fontsize);
+    cursor: pointer;
+}
+
+.scrollTodayButton::after{
+    content: '';
+    position: absolute;
+    width: 130%;
+    height: 1.8vw;
+    background-color: rgba(var(--tertiary-color), 0.2);
+    z-index: -1;
+    border-radius: 0.4vw;
+    transition: background-color 0.2s, border 0.2s;
+    border: 0.15vw solid rgba(var(--tertiary-color-hover), 0);
+}
+
+.scrollTodayButton:hover::after{
+    background-color: rgba(var(--tertiary-color), 0.4);
+}
+
+.scrollTodayButton.clicked::after{
+    background-color: rgba(var(--tertiary-color), 0.7);
+    border: 0.15vw solid rgba(var(--tertiary-color-hover), 1);
+}
+
+.addOnIcon{
+    width: 1.3vw;
+    height: 1.3vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+
+.addOnIcon path{
+    stroke:black;
+    stroke-width: 0.6vw;
+    stroke-linecap: round;
+}
+
+.addOnIcon::after{
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border-radius: 50%;
+}
+
+.addOnIcon:hover::after{
+    background-color: rgba(249, 248, 248, 0.5);
+    border: 0.1vw solid white;
+    box-shadow: 0.06vw 0.2vw 0.6vw rgba(0, 0, 0, 0.25);
+}
+.reminders{
+    width: 100%;
+    min-height: 24vh;
+}
+
+.reminders.collapsed{
+    writing-mode: vertical-rl;
+}
+
+.reminders.collapsed .addOnIcon, 
+.todayEvent.collapsed .addOnIcon,
+.reminders.collapsed .panelContent, 
+.todayEvent.collapsed .panelContent{
+    display: none;
+}
+
+.todayEvent{
+    width: 100%;
+    min-height: 24vh;
+}   
+
+.todayEvent.collapsed{
+    writing-mode: vertical-rl;
+}
+
+.reminders, 
+.todayEvent{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vw;
+}
+
+.panelContent{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5vw;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.message{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;;
+    width: 100%;
+    gap: 0.5vw;
+    border-radius: 5vw;
+    padding: 0.3vw 1.1vw;
+    position: relative;
+    cursor: pointer;
+}
+
+.reminderEmptyMessage, 
+.eventEmptyMessage{
+    background-color: rgba(var(--secondary-color), 0.1);
+    padding: 0.3vw 1.1vw;
+    border-radius: 5vw;
+    font-size: var(--h5-fontsize);
+    width: 100%;
+}
+
+.message::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 5vw;
+    background-color: rgba(var(--tertiary-color), 0);
+    transition: background-color 0.2s;
+}
+
+.message:hover::before{
+    background-color: rgba(var(--tertiary-color), 0.2);
+}
+
+.message::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 1vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.message h4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.message h4 sup{
+    vertical-align: top;
+}
+
+.message .time{
+    white-space: nowrap;
+    min-width: 10vw;
+}
+.message .messageTitle{
+    white-space: nowrap;
+}
+
+.reminders .message{
+    background-color: #F5FF9C;
+    justify-content: space-between;
+}
+
+.reminders .message .wrapper3{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+
+}
+
+.tickAsDone{
+    border-radius: 50%;
+    width: 1.5vw;
+    height: 1.5vw;
+    background-color: white;
+    align-self:center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tickAsDone:hover{
+    border: 0.15vw solid rgba(0, 0, 0, 0.25);
+}
+
+.tick{
+    width: 0.9vw;
+    z-index: 1;
+    transition: transform 0.1s ease;
+    transform: scale(0); 
+}
+
+.tick.ticked{
+    transform: scale(1); 
+}
+
+.tick path{
+    fill: #0F1D16;
+}
+
+.tickAsDone::after{
+    content: '';
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    transform: scale(0);
+    background-color: var(--done-color);
+    transition: transform 0.2s ease-out;
+}
+
+.tickAsDone.ticked::after{
+    transform: scale(1);
+}
+
+.calender{
+    background-color: transparent;
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    border-radius: 0.8vw;
+    padding: 0.8vw;
+    font-size: var(--h5-fontsize);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    position: relative;
+}
+
+.monthTime{
+    background-color: transparent;
+    height: 100%; 
+    width: 8.2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.monthTime .month{
+    background-color: transparent;
+    width: 100%;
+    flex: 0 0 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.3vw;
+    position: relative;
+    z-index: 0;
+    gap: 0.3vw;
+    position: relative;
+}
+
+.monthTime .month h5{
+    min-width: 0;
+    flex: 1;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.monthTime .month h5::after{
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 120%;
+    left: -5%;
+    top: -10%;
+    border-radius: 0.5vw;
+    background-color: rgba(var(--tertiary-color), 0);
+    z-index: -1;
+    transition: background-color 0.2s;
+    pointer-events: none;
+}
+
+.monthTime .month:hover h5::after{
+    background-color: rgba(var(--tertiary-color), 0.2);
+}
+
+.monthTime .month h5.clicked::after{
+    background-color: rgba(var(--tertiary-color-hover), 0.5);
+}
+
+.monthTime .month button,
+.selectMonthHeader button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    width: 1vw;
+}
+
+.month button svg,
+.selectMonthHeader button{
+    width: 1vw;
+    fill: none;
+    stroke-width: 1.5; 
+    stroke: currentColor;
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.month::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+    border-bottom: 0.15vw solid rgba(var(--tertiary-color), 0.4);
+    pointer-events: none;
+    user-select: none;
+}
+
+.monthTime .timeWrapper{
+    background-color: transparent;
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-bottom: 0.27vw;
+    position: relative;
+}
+
+.timeWrapper .time{
+    background-color: transparent;
+    width: 100%;
+    flex: 0 0 5vw;
+    padding-bottom: 0.3vw;
+    display: flex;
+    align-items: flex-end;
+    /* background-color: blue; */
+}
+
+.timeWrapper .time:first-child{
+    flex: 0 0 2vw;
+    /* background-color: red; */
+}
+
+.divisionLine{
+    background-color: rgba(var(--tertiary-color), 0.4);
+    height: 100%;
+    width: 0.1vw;
+}
+
+.calenderDays{
+    min-width: 0;
+    flex: 1;
+    background-color: transparent;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: auto;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.calenderDays.dragging{
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.calenderDays{
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+.calenderDays .day{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: transparent;
+    min-width: 15vw;
+    width: 15vw;
+    position: relative;
+}
+
+.day .dateHeader{
+    background-color: rgba(var(--primary-color), 1);
+    flex: 0 0 2vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 0.3vw;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.dateHeader.today h5{
+    font-weight: bold;
+}
+
+.day .dateHeader::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+    border-bottom: 0.15vw solid rgba(var(--tertiary-color), 0.4);
+}
+
+.calenderDays .day.alt{
+    background: linear-gradient(
+        to top,
+        rgba(var(--tertiary-color), 0.4) 0%,
+        rgba(var(--tertiary-color), 0.2) 95%,
+        rgba(var(--primary-color), 0) 100%
+    );
+}
+
+.day.alt .dateHeader{
+    background-color: transparent;
+}
+
+.calenderDays .day:not(.alt){
+    background-color: rgba(var(--tertiary-color), 0);
+}
+
+.calenderDays .day::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 2;
+    border-left: 0.15vw solid rgba(var(--tertiary-color), 0.4);
+}
+
+.calenderDays .day:first-child::after{
+    border: none;
+}
+
+.dateHeader sup{
+    vertical-align: top;
+}
+
+.scrollWrapper{
+    position: relative;
+    width: 100%;
+    /* background-color: rebeccapurple; */
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.day .eventCardWrapper{
+    position: relative;
+    width: 100%;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0.1vw;
+    height: 100vw;
+}
+
+.guideLines{
+    position: absolute;
+    top: 2.8vw;
+    background-color: transparent;
+    overflow: hidden;
+    overflow-y: auto;
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    z-index: 999;
+    padding-bottom: 1vw;
+    padding-left: 2.5vw;
+}
+
+.guideLines .guideLine{
+    position: relative;
+    width: 100%;
+    flex: 0 0 5vw;
+    top: 0;
+    background-color: transparent;
+}
+
+.guideLines .guideLine:first-child{
+    flex: 0 0 1vw;
+}
+
+.guideLines .guideLine::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-bottom: 0.1vw dashed rgba(var(--tertiary-color), 0.5);
+}
+
+.picker::-webkit-scrollbar,
+.timeWrapper::-webkit-scrollbar,
+.scrollWrapper::-webkit-scrollbar{
+    -webkit-appearance: none;
+    width: 0;
+}
+
+.guideLines::-webkit-scrollbar,
+.editor::-webkit-scrollbar,
+.panelContent::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.calenderDays::-webkit-scrollbar{
+    height: 0.3vw;
+    margin-block: 50em;
+}
+
+.editor::-webkit-scrollbar-track,
+.guideLines::-webkit-scrollbar-track,
+.panelContent::-webkit-scrollbar-track,
+.calenderDays::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.editor::-webkit-scrollbar-thumb,
+.guideLines::-webkit-scrollbar-thumb,
+.panelContent::-webkit-scrollbar-thumb,
+.calenderDays::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.editor:hover::-webkit-scrollbar-track,
+.guideLines:hover::-webkit-scrollbar-track,
+.panelContent:hover::-webkit-scrollbar-track,
+.calenderDays:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.editor:hover::-webkit-scrollbar-thumb,
+.guideLines:hover::-webkit-scrollbar-thumb,
+.panelContent:hover::-webkit-scrollbar-thumb,
+.calenderDays:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.eventCard{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 90%;
+    background: transparent;
+    border-radius: 0.7vw;
+    padding: 0.5vw 0.5vw 0.5vw 1vw;
+    /* overflow: hidden; */
+    cursor: pointer;
+    z-index: 3;
+    box-shadow: 0 -0.1vw 0.6vw rgba(var(--secondary-color), 0.3);
+    border-top: 0vw solid rgba(var(--tertiary-color), 1);
+    border-bottom: 0vw solid rgba(var(--tertiary-color), 1);
+    transition: border-width 0.1s;
+}
+
+.eventCard::before,
+.eventCard::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.5vw;
+    left: 0;
+    background-color: transparent;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.eventCard:focus::before{
+    top: -0.25vw;
+    cursor: n-resize;
+    pointer-events: auto;
+}
+
+.eventCard:focus::after{
+    bottom: -0.25vw;
+    cursor: s-resize;
+    pointer-events: auto;
+}
+
+.eventCard:focus{
+    border-top: 0.15vw solid rgba(var(--tertiary-color), 1);
+    border-bottom: 0.15vw solid rgba(var(--tertiary-color), 1);
+    outline: none;
+}
+
+.eventCardStyle1{
+    background: radial-gradient(
+        circle at 90% 90%,
+        rgba(144, 96, 226, 0.52) 0%,
+        rgba(164, 198, 248, 0.7) 40%,
+        rgba(164, 198, 248, 0.7) 100%
+    );
+}
+
+.eventCardStyle2{
+    background: radial-gradient(
+        circle at 110% -10%,
+        rgba(174, 226, 96, 0.52) 0%,
+        rgba(249, 164, 166, 0.7) 50%,
+        rgba(249, 164, 166, 0.7) 100%
+    );
+}
+
+.eventCardStyle3{
+    background: radial-gradient(
+        circle at 10% 60%,
+        rgba(150, 132, 255, 0.4) 0%,
+        rgba(164, 249, 179, 0.7) 50%,
+        rgba(164, 249, 179, 0.7) 100%
+    );
+}
+
+.eventCardStyle4{
+    background: #F5FF9C;
+}
+
+.eventCard .eventTitle{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.eventCard .eventDescription{
+    width: 100%;
+    /* min-height: 0;
+    flex: 0; */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    /* background-color: blue; */
+}
+
+.eventCard.size1{
+    top: 0;
+    height: 1.25vw;
+    padding: 0 0.5vw 0 1vw;
+    justify-content: center;
+}
+
+.eventCard .eventTitle{
+    font-size: var(--h5-fontsize);
+    flex: 0 0 auto;
+}
+
+.eventCard.size1 .eventDescription,
+.eventCard.size2 .eventDescription{
+    display: none;
+}
+
+
+.eventCard.size2{
+    height: 2.5vw;
+    justify-content: flex-start;
+}
+
+.eventCard.size3{
+    height: 3.75vw;
+}
+
+.eventCard.size3 .eventDescription{
+    -webkit-line-clamp: 1;
+}
+
+.selectMonth{
+    position: absolute;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 0.7vw;
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.3);
+    top: 15.5vw;
+    left: 6.7vw;
+    transform: translateY(-1vw) scale(0);
+    transform-origin: top;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.selectMonth.show{
+    animation: calendarPop 0.25s forwards;
+    pointer-events: auto;
+}
+
+@keyframes calendarPop{
+    0%{
+        transform: translateY(-1vw) scale(0);
+    }
+    60%{
+        transform: translateY(0.1vw) scale(1.05);
+    }
+    100%{
+        transform: translateY(0vw) scale(1);
+    }
+}
+
+.selectMonthHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3vw;
+}
+
+.year{
+    text-align: center;
+    width: 5vw;
+    font-size: var(--h5-fontsize);
+}
+
+.selectMonthHeader button{
+    position: relative;
+}
+
+.selectMonthHeader button::after{
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.1s;
+}
+
+.selectMonthHeader button:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.selectMonth .months{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0.3vw;
+    /* background-color: red; */
+}
+
+.months button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blue; */
+    width: 2.5vw;
+    border-radius: 0.3vw;
+    font-size: var(--h5-fontsize);
+    cursor: pointer;
+    border: 0.15vw solid rgba(var(--tertiary-color), 1);
+    background-color: rgba(var(--tertiary-color), 0);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.months button:hover{
+    border: 0.15vw solid rgba(var(--secondary-color), 1);
+    background-color: rgba(var(--tertiary-color), 0.2);
+}
+
+.months button.selected{
+    border: 0.15vw solid rgba(var(--secondary-color), 0);
+    background-color: rgba(var(--tertiary-color), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.months button:hover.selected{
+    border: 0.15vw solid rgba(var(--secondary-color), 1);
+    background-color: rgba(var(--tertiary-color-hover), 1);
+}
+
+.guideTime1,
+.guideTime2{
+    position: absolute;
+    background-color: transparent;
+    left: 0;
+    z-index: 6;
+    height: 0;
+    width: 100%;
+    border-bottom: 0.15vw dashed rgba(var(--tertiary-color), 1);
+    transform: scaleX(0);
+    transition: transform 0.1s;
+    transform-origin: left;
+    display: flex;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.guideTime1::after,
+.guideTime2::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.8vw;
+    background-color: transparent;
+    cursor: n-resize;
+}
+
+.guideTime1.show,
+.guideTime2.show{
+    transform: scaleX(1);
+}
+
+.startTime,
+.endTime{
+    position: absolute;
+    font-size: var(--p-fontsize);
+    right: 0;
+    background-color: rgba(var(--tertiary-color), 0.5);
+    width: 4vw;
+    padding: 0.05vw 0.2vw;
+    border-radius: 0.3vw;
+    text-align: right;
+    transform: scale(0);
+    transform-origin: center right;
+    transition: transform 0.1s;
+}
+
+.startTime.show,
+.endTime.show{
+    transform: scale(1);
+}
+
+.eventDetail, 
+.reminderDetail{
+    outline: none;
+    width: 30vw;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    gap: 0.5vw;
+    padding: 1.5vw 2.3vw;
+}
+
+.eventDetailTitle,
+.reminderDetailTitle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: auto;
+    position: relative;
+    gap: 0.5vw;
+}
+
+.eventDetailTitle::after,
+.reminderDetailTitle::after{
+    content: '';
+    position: absolute;
+    width: 96%;
+    height: 0.05vw;
+    left: 0;
+    bottom: -0.1vw;
+    background-color: rgba(var(--tertiary-color-hover), 0.5);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.eventDetailTitle:has(input:focus)::after,
+.reminderDetailTitle:has(input:focus)::after{
+    background-color: rgba(var(--tertiary-color-hover), 1);
+    transform: scaleX(1);
+}
+
+.eventDetailTitle input,
+.reminderDetailTitle input{
+    outline: none;
+    border: none;
+    font-size: var(--h4-fontsize);
+    color: rgba(var(--secondary-color), 1);
+    background-color: transparent;
+    width: 20vw;
+    padding-left: 0.5vw;
+}
+
+.eventDetailTitle label,
+.reminderDetailTitle label{
+    font-size: var(--p-fontsize);
+}
+
+.eventDetail .dialogHeader,
+.reminderDetail .dialogHeader{
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.dialogHeader .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1vw;
+}
+
+.dialogHeader .deleteEventBtn{
+    width: 1.3vw;
+    height: 1.3vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deleteEventBtn svg{
+    width: 1.3vw;
+    height: 1.3vw;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 0.5);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.deleteEventBtn:hover svg{
+    stroke-width: 2;
+    stroke: var(--overdue-color);
+}
+
+.reminderDetailDesc,
+.eventDetailDesc{
+    flex: 0 0 7vw;
+    width: 100%;
+    padding-right: 0.2vw;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    position: relative;
+    /* background-color: blue; */
+    border-radius: 0.5vw;
+    padding-bottom: 0.5vw;
+    border: 0.1vw solid rgba(var(--tertiary-color), 1);
+}
+
+.reminderDetailDesc .editor,
+.eventDetailDesc .editor{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: var(--p-fontsize);
+    padding: 1vh 0.5vw;
+    cursor: text;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    user-select: text; 
+    white-space: pre-wrap; 
+    word-break: break-word;
+    position: relative;
+    z-index: 1;
+}
+
+.editor p{
+    margin: 0;
+    line-height: 1.2;
+    font-size: var(--p-fontsize);
+}
+
+.editor p + p,
+.editor p + span, 
+.editor span + p{
+    margin-top: 0.5vw;
+}
+
+.reminderDetailDesc:has(.editor:focus-within),
+.eventDetailDesc:has(.editor:focus-within){
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.placeHolder{
+    color: rgba(var(--tertiary-color), 1);
+    pointer-events: none;
+    font-size: var(--p-fontsize);
+    position: absolute;
+    top: 1vh;
+    left: 0.5vw;
+    user-select: none;
+    z-index: 2;
+}
+
+.editor:not(:empty) + .placeholder{
+    display: none;
+}
+
+.eventDetail .selectTime{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    gap: 1vw;
+}
+
+.reminderDetail .selectTime{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    gap: 1vw;
+}
+
+.datePickerWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    /* background-color: blue; */
+}
+
+.datePickerWrapper .pickerHeader{
+    justify-self: center;
+}
+
+.datePickerWrapper .startPickerWrapper{
+    width: 50%;
+}
+
+.selectTime .startPickerWrapper,
+.selectTime .pickerWrapper,
+.selectTime .endPickerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+    gap: 0.3vw;
+    /* background-color: blue; */
+}
+
+.pickerHeader{
+    flex: 0 0 auto;
+    font-size: var(--p-fontsize);
+}
+
+.startPickerWrapper .timePicker,
+.pickerWrapper .timePicker,
+.endPickerWrapper .timePicker{
+    display: grid;
+    font-size: var(--h5-fontsize);
+    grid-template-columns: 1fr 0.5vw 1fr 0.5vw 1fr;
+    width: 100%;
+    background-color: transparent;
+    overflow: hidden;
+    height: 6.25vw;
+    border-radius: 0.5vw;
+    position: relative;
+    box-shadow: inset 0 0 0.5vw rgba(var(--tertiary-color), 0.8);
+}
+
+.timePicker::before,
+.timePicker::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2.5vw;
+    background-color: rgba(var(--tertiary-color), 0.3);
+    z-index: -1;
+    filter: blur(0.2vw);
+}
+
+.timePicker::before{
+    top: 0;
+}
+
+.timePicker::after{
+    bottom: 0;
+}
+
+.timePicker .picker{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    /* background-color: red; */
+    overflow: hidden;
+    overflow-y: auto;
+    height: 6.25vw;
+    padding-top: 2.5vw;
+    padding-bottom: 2.5vw;
+}
+
+.timePicker label{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picker .option{
+    flex: 0 0 1.25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--p-fontsize);
+    color: rgba(var(--tertiary-color), 0.5);
+    scroll-snap-align: center;
+}
+
+.picker .option.active{
+    font-size: var(--h5-fontsize);
+    color: rgba(var(--secondary-color), 1);
+}
+
+.eventDetail .ccWrapper,
+.reminderDetail .ccWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5vw;
+    margin-top: 1vw;
+}
+
+.ccWrapper button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: var(--h5-fontsize);
+    padding: 0.5vh 0.5vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.ccWrapper .cancelEvent{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.ccWrapper .cancelEvent:hover{
+    background-color: rgba(var(--secondary-color), 0.5);
+    color: rgba(var(--primary-color), 1);
+}
+
+.ccWrapper .confirmEvent{
+    background-color: rgba(var(--tertiary-color), 0.8);
+}
+
+.ccWrapper .confirmEvent:hover{
+    background-color: rgba(var(--tertiary-color-hover), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.selectStyle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: var(--h5-fontsize);
+}
+
+.style1, 
+.style2, 
+.style3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    gap: 0.5vw;
+    cursor: pointer;
+    color: rgba(var(--tertiary-color), 1);
+}
+
+.style1.clicked, 
+.style2.clicked, 
+.style3.clicked{
+    color: rgba(var(--secondary-color), 1);
+}
+
+.style1.clicked::before, 
+.style2.clicked::before, 
+.style3.clicked::before{
+    border: 0.1vw solid rgba(var(--secondary-color), 1);
+}
+
+.style1::before{
+    content: '';
+    position: relative;
+    width: 1vw;
+    height: 1vw;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 90% 90%,
+        rgba(144, 96, 226, 0.52) 0%,
+        rgba(164, 198, 248, 0.7) 40%,
+        rgba(164, 198, 248, 0.7) 100%
+    );
+    border: 0.1vw solid rgba(var(--secondary-color), 0);
+    transition: border-width 0.2s;
+}
+
+.style2::before{
+    content: '';
+    position: relative;
+    width: 1vw;
+    height: 1vw;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 110% -10%,
+        rgba(174, 226, 96, 0.52) 0%,
+        rgba(249, 164, 166, 0.7) 50%,
+        rgba(249, 164, 166, 0.7) 100%
+    );
+    border: 0.1vw solid rgba(var(--secondary-color), 0);
+    transition: border-width 0.2s;
+}
+
+.style3::before{
+    content: '';
+    position: relative;
+    width: 1vw;
+    height: 1vw;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 10% 60%,
+        rgba(150, 132, 255, 0.4) 0%,
+        rgba(164, 249, 179, 0.7) 50%,
+        rgba(164, 249, 179, 0.7) 100%
+    );
+    border: 0.1vw solid rgba(var(--secondary-color), 0);
+    transition: border-width 0.2s;
+}

@@ -1,0 +1,834 @@
+.attachmentDetail{
+    width: 80%;
+    height: 87%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    box-sizing: border-box;
+    gap: 1vw;
+}
+
+.dialogHeader{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.attachmentDjustifyetailWrapper1{
+    display: flex;
+    -content: flex-start;
+    align-items: center;
+    gap: 1vw;
+    width: auto;
+}
+
+.attachmentDetailWrapper1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+    gap: 1vw;
+}
+
+.attachmentDetailWrapper1 .fileRepository{
+    max-width: 35vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.attachmentDetailWrapper1 .fileRepository h3{
+    flex: 0 0 auto;
+    max-width: calc(35vw / 3);
+    direction: ltr;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.attachmentDetailWrapper1 .fileRepository span{
+    font-size: var(--h3-fontsize);
+    flex: 0 0 auto;
+}
+
+.attachmentDetailWrapper1 .fileRepository h3:last-child{
+    direction: rtl;
+    flex: 1;
+    min-width: 0;
+}
+
+.attachmentDetailWrapper1 .fileSize,
+.attachmentDetailWrapper1 .uploadTime{
+    align-self: flex-end;
+    color: rgba(var(--tertiary-color), 1);
+    margin-left: -0.5vw;
+    max-width: 4vw;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 0 0 auto;
+}
+
+.memberAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--h4-fontsize);
+    background-color: var(--upload-avatar);
+    width: 2vw;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+.attachmentDetailWrapper3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.attachmentDetail .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.attachmentDetail .shareButton,
+.attachmentDetail .downloadButton,
+.attachmentDetail .closeBtn,
+.attachmentDetail .sendIcon{
+    width: 2vw;
+    height: 2vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: var(--h2-fontsize);
+    color: rgba(var(--tertiary-color), 1);
+}
+
+.attachmentDetail .shareButton,
+.attachmentDetail .downloadButton{
+    transform: translate(0, -0.1vw);
+}
+
+.attachmentDetail .closeBtn{
+    line-height: 2vw;
+    transform: translate(0, 0.1vw);
+}
+
+.attachmentDetail .shareButton svg,
+.attachmentDetail .downloadButton svg,
+.attachmentDetail .sendIcon{
+    fill: none;
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    width: 1.5vw;
+}
+
+.attachmentDetail .shareButton:hover svg,
+.attachmentDetail .downloadButton:hover svg,
+.attachmentDetail .closeBtn:hover{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+    color: rgba(var(--tertiary-color-hover), 1);
+}
+
+.attachmentDetail .shareButton::after,
+.attachmentDetail .downloadButton::after,
+.attachmentDetail .closeBtn::after,
+.zoomTool button::after{
+    content: '';
+    width: 2vw;
+    height: 2vw;
+    background-color: rgba(var(--secondary-color), 0.1);
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s;
+    top: 0.1vw;
+}
+
+.attachmentDetail .closeBtn::after{
+    top: -0.1vw;
+}
+
+.attachmentDetail .shareButton:hover::after,
+.attachmentDetail .downloadButton:hover::after,
+.attachmentDetail .closeBtn:hover::after,
+.zoomTool button:hover::after{
+    transform: scale(1);
+}
+
+.attachmentPreviewWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.attachmentPreview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7vw;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+
+.attachmentPreview::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0vw rgba(var(--secondary-color), 0.25);
+    transition: box-shadow 0.2s;
+    position: absolute;
+}
+
+.attachmentPreviewWrapper:hover .attachmentPreview::after{
+    box-shadow: inset 0 0 3vw rgba(var(--secondary-color), 0.25);
+}
+
+.attachmentPreview img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    background-color: white;
+    user-select: none;
+    pointer-events: none;
+}
+
+.attachmentPreview:hover ~ .zoomTool,
+.zoomTool:hover{
+    transform: translate(0, 0) scale(1);
+}
+
+.attachmentPreview video{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.videoControls .playPause{
+    width: 5vw;
+    height: 5vw;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    background-color: rgba(var(--secondary-color), 0);
+    border: none;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: background-color 0.2s;
+}
+
+.videoControls .play.hidden,
+.videoControls .pause.hidden{
+    display: none;
+}
+
+.videoControls .playPause.hide{
+    animation: hidePlayPause 0.5s forwards;
+    pointer-events: none;
+}
+
+.videoControls .playPause.show{
+    animation: showPlayPause 0.5s forwards;
+    pointer-events: auto;
+}
+
+@keyframes  hidePlayPause{
+    0%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    40%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    60%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+        transform: translate(-50%, -10%) scale(0);
+    }
+}
+
+@keyframes showPlayPause{
+    0%{
+        opacity: 0;
+        transform: translate(-50%, -10%) scale(0);
+    }
+    60%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.videoControls .playPause .play{
+    fill: rgba(var(--primary-color), 1);
+    transition: fill 0.1s;
+    transform: translate(0.25vw, 0.1vw);
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 100%;
+}
+
+.videoControls .playPause .pause{
+    fill: rgba(var(--primary-color), 1);
+    transition: fill 0.1s;
+    /* transform: translate(0.25vw, 0.1vw); */
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 80%;
+}
+
+.videoControls .playPause:hover{
+    background-color: rgba(var(--secondary-color), 0.4);
+}
+
+.videoControls .playPause:hover svg{
+    fill: rgba(var(--primary-color-hover), 1);
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.attachmentPreview .timeline{
+    -webkit-appearance: none;
+    position: absolute;
+    flex: 1;
+    width: 100%;
+    appearance: none;
+    cursor: pointer;
+    z-index: 1;
+    bottom: 1.6vw;
+    height: 1vw;
+    background-color: transparent;
+    transition: height 0.2s;
+    opacity: 0;
+    transform: translate(0, 3vw);
+}
+
+.volumeControl .volume{
+    -webkit-appearance: none;
+    background-color: transparent;
+    width: 0;
+    height: 0.7vw;
+    cursor: pointer;
+    transition: width 0.2s;
+}
+
+.volumeControl .volume.show{
+    width: 3vw;
+}
+
+.attachmentPreview .timeline.show,
+.time.show, .volumeControl.show, .fullScreenToggle.show{
+    animation: showTimeline 0.4s forwards;
+    pointer-events: auto;
+}
+
+.attachmentPreview .timeline.hide,
+.time.hide, .volumeControl.hide, .fullScreenToggle.hide{
+    animation: hideTimeline 0.4s forwards;
+    pointer-events: auto;
+}
+
+@keyframes  hideTimeline{
+    0%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    40%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    60%{
+        opacity: 0;
+        transform: translate(0, 0.6vw);
+    }
+    100%{
+        opacity: 0;
+        transform: translate(0, 3vw);
+    }
+}
+
+@keyframes  showTimeline{
+    0%{
+        opacity: 0;
+        transform: translate(0, 3vw);
+    }
+    60%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.attachmentPreview .timeline::-webkit-slider-runnable-track{
+    height: 0.1vw;
+    background: linear-gradient(
+        to right,
+        rgba(var(--tertiary-color), 1) 0% ,
+        rgba(var(--tertiary-color), 1) var(--progress),
+        rgba(var(--primary-color), 1) var(--progress),
+        rgba(var(--primary-color), 1) 100%
+    );
+    transition: height 0.2s;
+    cursor: pointer;
+}
+
+.volumeControl .volume::-webkit-slider-runnable-track{
+    height: 0.2vw;
+    background: linear-gradient(
+        to right,
+        rgba(var(--primary-color), 1) 0% ,
+        rgba(var(--primary-color), 1) var(--volume),
+        rgba(var(--primary-color), 0.5) var(--volume),
+        rgba(var(--primary-color), 0.5) 100%
+    );
+    transition: height 0.2s;
+    cursor: pointer;
+}
+
+.attachmentPreview .timeline::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: rgba(var(--tertiary-color-hover), 1);
+    width: 0.8vw;
+    height: 0.8vw;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+}
+
+.volumeControl .volume::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: rgba(var(--primary-color), 1);
+    width: 0.5vw;
+    height: 0.5vw;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    top: 50%;
+    transform: translate(0, -50%) scale(0);
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.volumeControl .volume.show:hover::-webkit-slider-thumb{
+    transform: translate(0, -50%) scale(1.3);
+}
+
+.volumeControl .volume.show::-webkit-slider-thumb{
+    transform: translate(0, -50%) scale(1);
+}
+
+.attachmentPreview .timeline:hover::-webkit-slider-runnable-track,
+.volumeControl .volume:hover::-webkit-slider-runnable-track{
+    height: 0.3vw;
+}
+
+.volumeControl .volumeMax.hidden,
+.volumeControl .volumeMin.hidden,
+.volumeControl .volumeZero.hidden{
+    display: none;
+}
+
+.attachmentPreview .videoDetailWrapper{
+    position: absolute;
+    bottom: 0;
+    padding: 0 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+    width: 100%;
+    background-color: transparent;
+    height:2vw;
+    pointer-events: auto;
+}
+
+.attachmentPreview  .videoDetailWrapper2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+
+.attachmentPreview .time{
+    position: relative;
+    color: rgba(var(--primary-color), 1);
+    min-width: 5vw;
+    max-width: 10vw;
+}
+
+.attachmentPreview .volumeControl{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 5vw;
+    position: relative;
+    bottom: 0vw;
+    gap: 0.5vw;
+    z-index: 3;
+    background-color: transparent;
+}
+
+.attachmentPreview .fullScreenToggle{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 4;
+    justify-self: flex-end;
+}
+
+.attachmentPreview .fullScreenToggle .fullScreen{
+    width: 1.5vw;
+    stroke: rgba(var(--primary-color), 1);
+    stroke-width:7;
+    fill: none;
+}
+
+.fullScreenToggle:hover .fullScreen .cornerTL,
+.fullScreenToggle:hover .fullScreen .cornerTR,
+.fullScreenToggle:hover .fullScreen .cornerBL,
+.fullScreenToggle:hover .fullScreen .cornerBR
+.fullScreenToggle:hover .exitFullScreen .cornerTL,
+.fullScreenToggle:hover .exitFullScreen .cornerTR,
+.fullScreenToggle:hover .exitFullScreen .cornerBL,
+.fullScreenToggle:hover .exitFullScreen .cornerBR
+{
+    transition: transform 0.2s;
+}
+
+.fullScreenToggle:hover .fullScreen .cornerTL{
+    transform: translate(-7%, -7%);
+}
+.fullScreenToggle:hover .fullScreen .cornerTR{
+    transform: translate(7%, -7%);
+}
+.fullScreenToggle:hover .fullScreen .cornerBL{
+    transform: translate(-7%, 7%);
+}
+.fullScreenToggle:hover .fullScreen .cornerBR{
+    transform: translate(7%, 7%);
+}
+
+.fullScreenToggle:hover .exitFullScreen .cornerTL{
+    transform: translate(5%, 5%);
+}
+.fullScreenToggle:hover .exitFullScreen .cornerTR{
+    transform: translate(-5%, 5%);
+}
+.fullScreenToggle:hover .exitFullScreen .cornerBL{
+    transform: translate(5%, -5%);
+}
+.fullScreenToggle:hover .exitFullScreen .cornerBR{
+    transform: translate(-5%, -5%);
+}
+
+.attachmentPreview .fullScreenToggle .exitFullScreen{
+    width: 1.5vw;
+    stroke: rgba(var(--primary-color), 1);
+    stroke-width: 0;
+    fill: rgba(var(--primary-color), 1);
+}
+
+.attachmentPreview .fullScreenToggle .exitFullScreen.hidden,
+.attachmentPreview .fullScreenToggle .fullScreen.hidden,
+.attachmentPreview .videoDetailWrapper.hidden{
+    display: none;
+}
+
+.attachmentPreview .volumeControl svg{
+    width: 1.5vw;
+    fill: rgba(var(--primary-color), 1);
+    cursor: pointer;
+}
+
+.attachmentPreview .volumeControl path{
+    stroke: transparent;
+}
+
+.zoomTool{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+    background-color: rgba(var(--secondary-color), 0.5);
+    color: rgba(var(--primary-color), 1);
+    position: absolute;
+    bottom: 1.5vw;
+    border-radius: 0.7vw;
+    padding: 0.7vh 1vw;
+    z-index: 1;
+    transform: translate(0, 6vw) scale(1.2);
+    transition: transform 0.2s;
+}
+
+.zoomTool button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 1.5vw;
+    height: 1.5vw;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+.zoomTool button svg{
+    stroke-width: 1.5;
+    stroke: rgba(var(--primary-color), 1);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    width: 1.5vw;
+}
+
+.zoomTool button::after{
+    width: 1.75vw;
+    height: 1.75vw;
+    background-color: rgba(var(--secondary-color), 0.5);
+    top: 0.2vw;
+}
+
+.zoomTool.hidden{
+    display: none;
+}
+
+.attachmentPreview .noPreviewEnabled{
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.attachmentPreview .noPreviewEnabled.hidden{
+    display: none;
+}
+
+.attachmentDetail .commentSection{
+    width: 100%;
+    min-height: 5vw;
+    max-height: 8vw;
+    border-radius: 0.7vw;
+    border: 0.1vw solid rgba(var(--secondary-color), 0.3);
+    overflow: hidden;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.attachmentDetail .textAreaWrapper{
+    min-height: 0;
+    width: 100%;
+    flex: 1;
+    padding-right: 0.2vw;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.attachmentDetail .editor{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: var(--h4-fontsize);
+    padding: 1vh 1vw;
+    cursor: text;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    user-select: text; 
+    white-space: pre-wrap; 
+    word-break: break-word;
+    position: relative;
+    z-index: 1;
+}
+
+.commentSection:has(.editor:focus-within){
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.commentSection .editor p{
+    margin: 0;
+    line-height: 1.2;
+    font-size: var(--h4-fontsize);
+}
+
+.commentSection .editor p + p,
+.commentSection .editor p + span, 
+.commentSection .editor span + p{
+    margin-top: 0.5vw;
+}
+
+.commentSection .placeHolder{
+    color: rgba(var(--tertiary-color), 1);
+    pointer-events: none;
+    font-size: var(--h4-fontsize);
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    user-select: none;
+    z-index: 2;
+}
+
+.commentSection .editor::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.commentSection .editor::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.commentSection .editor::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.commentSection .editor:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.commentSection .editor:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.attachmentDetail .sendIcon svg{
+    stroke-width: 2;
+    width: 1.5vw;
+    fill: rgba(var(--tertiary-color),0);
+    stroke: rgba(var(--tertiary-color), 1);
+    transition: fill 0.1s, stroke 0.1s;
+}
+
+.attachmentDetail .sendIcon:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+    fill: rgba(var(--tertiary-color),0.7);
+}
+
+.attachmentDetail .buttonWrapper{
+    width: 100%;
+    padding: 0 0.5vw;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.messageWrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.message{
+    position: relative;
+    font-size: var(--h4-fontsize);
+    max-width: 15vw;
+    width: auto;
+    padding: 1vh 1vw;
+    white-space: nowrap;
+    background-color: rgba(var(--secondary-color), 0.2);
+    text-align: center;
+    border-radius: 0.7vw; 
+    transform: scale(0) translate(0, 1vw);
+    transform-origin: bottom center;
+    opacity: 1;
+}
+
+.message.active{
+    animation: fadeOut 5s ease forwards;
+}
+
+@keyframes fadeOut{
+    0%{
+        transform: scale(0) translate(0, 1vw);
+        opacity: 1;
+    }
+    2.5%{
+        transform: scale(1) translate(0, 0vw);
+        opacity: 1;
+    }
+    40%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1) translate(0, 0.3vw);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,1567 @@
+.taskDetail .closeBtn{
+    position: absolute;
+    top: 2.3vw;
+    right: 2.3vw;
+    width: 2vw;
+    height: 2vw;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.taskDetail .deleteTaskBtn{
+    position: absolute;
+    top: 2.6vw;
+    right: 5vw;
+}
+
+.taskDetail .deleteTaskBtn{
+    width: 1.3vw;
+    height: 1.3vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.taskDetail .deleteTaskBtn svg{
+    width: 1.3vw;
+    height: 1.3vw;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 0.5);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.taskDetail .deleteTaskBtn:hover svg{
+    stroke-width: 2;
+    stroke: var(--overdue-color);
+}
+
+
+.taskDetail{
+    width: 80%;
+    height: 87%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+}
+
+.detailWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 1vw;
+    overflow: hidden;
+}
+
+.mainDetail{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.descriptionWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+}
+
+.taskTitleWrapper{
+    width: 100%;
+    /* background-color: blue; */
+    padding-right: 0.5vw;
+    position: relative;
+}
+
+.titleEdit{
+    background-color: transparent;
+    border: none;
+    font-size: var(--h2-fontsize);
+    outline: none;
+    width: 100%;
+}
+
+.taskTitleWrapper::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    z-index: -1;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+    left: 0;
+    top: 0;
+    transition: transform 0.2s;
+    transform-origin: left;
+}
+
+.taskTitleWrapper:has(.titleEdit:focus)::after{
+    transform: scaleX(1);
+}
+
+.descriptionView{
+    padding: 1vh 1vw;
+    cursor: text;
+    color: rgba(var(--tertiary-color), 1);
+    min-height: 4vw;
+    max-height: 15vw;
+    overflow-y: auto;
+    outline: none;
+    text-align: left;
+    width: 37.1vw;
+    min-width: 0;
+    word-wrap: break-word;
+    white-space: normal;
+    /* background-color: blue; */
+}
+
+.descriptionEdit{
+    width: 100%;
+    min-height: 4vw;
+    max-height: 100%;
+    background: transparent;
+    outline: none;
+    font-size: var(--p-fontsize);
+    color: rgba(var(--secondary-color), 1);
+    text-align: left;
+    resize: none;
+    border: none;
+    border-radius: 0.5vw;
+    padding: 1vh 1vw;
+    transition: background-color 0.2s;
+    overflow-y: auto;
+}
+
+.descriptionEdit.hide,
+.descriptionView.hide{
+    display: none;
+}
+
+.descriptionView.collapsed{
+    min-height: 0;
+}
+
+.descriptionView.collapsed p{
+    height: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.descriptionEdit::-webkit-scrollbar,
+.fileList::-webkit-scrollbar,
+.subtaskList::-webkit-scrollbar,
+.members::-webkit-scrollbar,
+.descriptionView::-webkit-scrollbar,
+.commentInput .editor::-webkit-scrollbar,
+.activityHistory::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.fileCardList::-webkit-scrollbar{
+    height: 0.3vw;
+    margin-block: 50em;
+}
+
+.descriptionEdit::-webkit-scrollbar-track,
+.fileList::-webkit-scrollbar-track,
+.subtaskList::-webkit-scrollbar-track,
+.members::-webkit-scrollbar-track,
+.descriptionView::-webkit-scrollbar-track,
+.commentInput .editor::-webkit-scrollbar-track,
+.commentInput::-webkit-scrollbar-track,
+.activityHistory::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.descriptionEdit::-webkit-scrollbar-thumb,
+.fileList::-webkit-scrollbar-thumb,
+.subtaskList::-webkit-scrollbar-thumb,
+.members::-webkit-scrollbar-thumb,
+.descriptionView::-webkit-scrollbar-thumb,
+.commentInput .editor::-webkit-scrollbar-thumb,
+.fileCardList::-webkit-scrollbar-thumb,
+.activityHistory::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.descriptionEdit:hover::-webkit-scrollbar-track,
+.fileList:hover::-webkit-scrollbar-track,
+.subtaskList:hover::-webkit-scrollbar-track,
+.members:hover::-webkit-scrollbar-track,
+.descriptionView:hover::-webkit-scrollbar-track,
+.commentInput .editor:hover::-webkit-scrollbar-track,
+.fileCardList:hover::-webkit-scrollbar-track,
+.activityHistory:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.descriptionEdit:hover::-webkit-scrollbar-thumb,
+.fileList::-webkit-scrollbar-thumb,
+.subtaskList:hover::-webkit-scrollbar-thumb,
+.members:hover::-webkit-scrollbar-thumb,
+.descriptionView:hover::-webkit-scrollbar-thumb,
+.commentInput .editor:hover::-webkit-scrollbar-thumb,
+.fileCardList:hover::-webkit-scrollbar-thumb,
+.activityHistory:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.descriptionEdit:focus{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.mainDetail .taskDescription{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+    gap: 0.3vw
+}
+
+.mainDetail .taskDescription .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 0.5vw;
+}   
+
+.hideOrShow{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.hideOrShow svg{
+    fill: none;
+    width: 1vw;
+    stroke-width: 1.5;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.showDescription, .hideDescription{
+    font-size: var(--p-fontsize);
+    cursor: pointer;
+    transition: text-decoration 0.2s;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2vw;
+    color: rgba(var(--tertiary-color), 1)
+}
+
+.showDescription:hover,
+.hideDescription:hover{
+    color: rgba(var(--tertiary-color-hover), 1)
+}
+
+.mainDetail .taskDescription .buttonWrapper.hide, 
+.showDescription.hide, .hideDescription.hide,
+.createSubtask.hide{
+    display: none;
+}
+
+.mainDetail .taskDescription .buttonWrapper button, 
+.saveFile, 
+.cancelFileChanges,
+.editFiles{
+    border-radius: 1vw;
+    border: none;
+    font-size: var(--p-fontsize);
+    padding: 0.7vh 1vw;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.buttonWrapper #saveDescription, 
+.saveFile, .editFiles{
+    background-color: rgba(var(--tertiary-color), 0.5);
+    color: rgba(var(--secondary-color), 1);
+}
+
+.buttonWrapper #cancelDescription,
+.cancelFileChanges{
+    background-color: rgba(var(--secondary-color), 0.1);
+    color: rgba(var(--secondary-color), 1);
+}
+
+.buttonWrapper #saveDescription:hover, 
+.saveFile:hover, .editFiles:hover{
+    background-color: rgba(var(--tertiary-color), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.buttonWrapper #cancelDescription:hover,
+.cancelFileChanges:hover{
+    background-color: rgba(var(--secondary-color), 0.4);
+    color: rgba(var(--primary-color), 1);
+}
+
+.activityHistory{
+    width: 100%;
+    margin-top: 0.5vw;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    overflow-y: auto;
+    outline: none;
+}
+
+.activityHistory .noMessage{
+    width: 100%;
+    padding: 1vh 1vw;
+    font-size: var(--h5-fontsize);
+    color: rgba(var(--tertiary-color),1);
+}
+
+.activityHistory .noMessage.hide{
+    display: none;
+}
+
+.activityList{
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    padding-right: 1vw;
+    overflow: hidden;
+}
+
+.activity{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+    padding-bottom: 1vw;
+    position: relative;
+}
+
+.activity::after{
+    content: '';
+    position: absolute;
+    height: calc(100% - 2vw - 1vw);
+    width: 0.1vw;
+    z-index: 1;
+    left: 0.95vw;
+    top: 2.5vw;
+    border-radius: 1vw;
+    background-color: rgba(var(--tertiary-color),0.7);
+}
+
+.activity:last-child::after{
+    background-color: transparent;
+}
+
+.activity .member{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+
+.activity .member .memberAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2vw;
+    background-color: var(--avatar-color);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: var(--h4-fontsize);
+}
+
+.activity .member .memberDetailWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5vw;
+}
+
+.activity .member .memberDetailWrapper .postTime{
+    color: rgba(var(--tertiary-color), 1);
+}
+
+.activity .content{
+    padding: 0;
+    padding-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.activity .content p{
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 0;
+    line-height: 1.2;
+    font-size: var(--p-fontsize);
+    cursor: text;
+    user-select: text;
+}
+
+.activity .content span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.activity .content span img{
+    max-width: 18vw;
+    max-height: 10vw;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.activity .attachedFiles{
+    padding-left: 3vw;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+}
+
+.activity .attachedFile{
+    background-color: rgba(var(--secondary-color), 0);
+    border: 0.15vw solid rgba(var(--tertiary-color), 1);
+    border-radius: 0.7vw;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1vh 1vw;
+    gap: 0.5vw;
+    width: 7.48vw;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s;
+}
+
+.activity .attachedFile:hover{
+    background-color: rgba(var(--secondary-color), 0.05);
+}
+
+.activity .attachedFile img{
+    width: 4vw;
+}
+
+.activity .attachedFile .fileDetailWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vw;
+}
+
+.activity .attachedFile .fileDetailWrapper p{
+    width: 5vw;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+.activity .attachedFile .fileName.expanded{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+.activity .attachedFile .downloadIcon{
+    position: absolute;
+    width: 1.5vw;
+    aspect-ratio: 1/1;
+    border: none;
+    outline: none;
+    background-color: rgba(var(--secondary-color),0.7);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    right: 0.5vw;
+    top: 0.5vw;
+    transform: translate(2vw, -2vw) scale(1.2);
+    transition: transform 0.2s;
+}
+
+.activity .attachedFile:hover .downloadIcon{
+    transform: translate(0, 0) scale(1);
+}
+
+.activity .attachedFile .downloadIcon svg{
+    width: 1vw;
+    stroke: rgba(var(--primary-color), 1);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+.secondaryDetail{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.3vw;
+    overflow: hidden;
+}
+
+.secondaryDetail .uploadWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1vw;
+    height: 9.3vw;
+    width: 100%;
+}
+
+.detailWrapper2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1vw;
+    flex: 1 1 50%;
+    /* background-color: blue; */
+}
+
+.detailWrapper2 h4{
+    width: 18vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    gap: 0.3vw;
+}
+
+.detailWrapper2 #assignee{
+    display: flex;
+    overflow: visible;
+}
+
+.detailWrapper2 .assigneeEl{
+    width: auto;
+    padding: 0.1vw 0.5vw;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 0.3vw;
+    box-shadow: 0.1vw 0.2vw 0.4vw rgba(var(--secondary-color), 0);
+    transition: box-shadow 0.2s;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+.assigneeEl .assigneeName{
+    width: auto;
+    max-width: 12vw;
+}
+
+.createSubtask .assigneeName{
+    position: relative;
+    max-width: 8vw;
+    gap: 0.3vw;
+}
+
+.createSubtask .assigneeName::before{
+    content: var(--assignee-name);
+    font-size: var(--p-fontsize);
+    position: absolute;
+    width: 1.2vw;
+    height: 1.2vw;
+    aspect-ratio: 1/1;
+    left: 0.1vw;
+    top: 0.15vw;
+    background-color: var(--assignee-avatar);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailWrapper2 .assigneeEl:hover{
+    box-shadow: 0.1vw 0.2vw 0.4vw rgba(var(--secondary-color), 0.2);
+}
+
+#startDate, 
+#dueDate{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    overflow: visible;
+}
+
+#startDate .selectedDate,
+#dueDate .selectedDate{
+    padding: 0.1vh 0.5vw;
+    background-color: transparent;
+    border-radius: 0.3vw;
+    box-shadow: 0.1vw 0.2vw 0.4vw rgba(var(--secondary-color), 0);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+#startDate .selectedDate:hover,
+#dueDate .selectedDate:hover{
+    box-shadow: 0.1vw 0.2vw 0.4vw rgba(var(--secondary-color), 0.2);
+}
+
+.uploadBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.uploadBox .state1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5vw;
+    width: 100%;
+    height: 100%;
+    padding: 2vw;
+    color: rgba(var(--tertiary-color), 1);
+    position: relative;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.2s;
+}
+
+.uploadBox .state1.dragover{
+    transform: scale(0.95);
+    color: rgba(var(--tertiary-color-hover), 1);
+}
+
+.uploadBox .state1.dragover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.uploadBox .state1::after{
+    position: absolute;
+    content: '';
+    width: 96%;
+    height: 96%;
+    background-color: rgba(var(--secondary-color), 0);
+    z-index: -1;
+    border-radius: 0.7vw;
+    transition: background-color 0.2s;
+}
+
+.uploadBox .state1 svg{
+    width: 2.8vw;
+    fill: none;
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 6;
+    transition: background-color 0.2s;
+}
+
+.uploadBox .dashed-rect{
+    position: absolute;
+    fill: none;
+    width: 100%;
+    height: 100%;
+    stroke: rgba(var(--tertiary-color), 1);
+    display: block;
+    transform: scale(1);
+    transition: transform 0.2s;
+}
+
+.uploadBox .dashed-rect rect{
+    stroke-width: 2;
+}
+
+.uploadBox .state1:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.uploadBox .state1:hover{
+    color: rgba(var(--tertiary-color-hover), 1);
+}
+
+.uploadBox .state1:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.uploadBox .state1.dragover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.uploadBox .dashed-rect.dragover{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+    transform: scale(0.95);
+}
+
+.uploadBox .state1.hide,
+.uploadBox .state2.hide, 
+.saveFile.hide,
+.cancelFileChanges.hide,
+.editFiles.hide,
+#saveDescription.hide,
+#cancelDescription.hide{
+    display: none;
+}
+
+.uploadBox .state2{
+    width: 96%;
+    height: 96%;
+    border-radius: 0.7vw;
+    /* background-color: red; */
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transform: scale(1);
+    transition: transform 0.2s;
+}
+
+.uploadBox .state2.dragover{
+    transform: scale(0.95);
+}
+
+.uploadBox .state2 .fileList{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.uploadBox .state2 .file{
+    width: 100%;
+    background-color: rgba(var(--secondary-color), 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5vw;
+    padding: 0.5vh 0.3vw;
+    position: relative;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.uploadBox .state2 .file:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.file .fileIcon{
+    width: 1.6vw;
+}
+
+.file .fileName{
+    flex: 0 0 7.6vw;
+}
+
+.file .fileSize{
+    flex: 0 0 4vw;
+}
+
+.file .fileName, 
+.file .fileSize, 
+.work, .status,
+.parentTask #parentTaskTitle{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+
+.file .deleteFile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.file .deleteFile svg{
+    width: 1vw;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 1);   
+}
+
+.deleteFile::after{
+    content: '';
+    position: absolute;
+    width: 1.2vw;
+    height: 1.2vw;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: rgba(var(--tertiary-color), 0.3);
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+
+.deleteFile:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1); 
+}
+
+.deleteFile:hover::after{
+    transform: scale(1);
+}
+
+.fileEditSave{
+    Display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 0.5vw;
+}
+
+.progressBarWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5vw;
+}
+
+.progressBar{
+    --bar-width: 1%;
+    margin-top: 0.4vw;
+    border-radius: 5vw;
+    height: 0.4vw;
+    width: 85%;
+    background-color: rgba(var(--secondary-color), 0.3);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.progressBar::after{
+    content: '';
+    position: relative;
+    height: 100%;
+    width: var(--bar-width);
+    left: 0;
+    background-color: var(--done-color);
+    border-radius: 5vw;
+    box-shadow: inset -0.2vw -0.15vw 0.15vw rgba(var(--secondary-color), 0.2),
+    inset 0.1vw 0.1vw 0.1vw rgba(var(--unassigned-color), 0.7);
+    transition: width 0.8s ease;
+}
+
+.progress{
+    font-size: var(--h4-fontsize);
+}
+
+.subtaskSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.4vw;
+}
+
+.subtaskSection .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.subtaskSection .header .addIcon,
+.createSubtask .buttonWrapper .confirmIcon, 
+.createSubtask .buttonWrapper .cancelIcon, 
+.commentInput .buttonWrapper .sendIcon,
+.commentInput .buttonWrapper .attachmentIcon,
+.fileCard .deleteFile{
+    cursor: pointer;
+    transition: stroke 0.2s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtaskSection .header .addIcon svg,
+.createSubtask .buttonWrapper .confirmIcon svg, 
+.createSubtask .buttonWrapper .cancelIcon svg,
+.commentInput .buttonWrapper .attachmentIcon svg,
+.commentInput .buttonWrapper .sendIcon svg,
+.fileCard .deleteFile svg{
+    width: 1.5vw;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 0.7);
+}
+
+.subtaskSection .header .addIcon:hover,
+.createSubtask .buttonWrapper .confirmIcon:hover, 
+.createSubtask .buttonWrapper .cancelIcon:hover{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.subtaskSection .header .addIcon::after,
+.createSubtask .buttonWrapper .confirmIcon::after, 
+.createSubtask .buttonWrapper .cancelIcon::after{
+    content: '';
+    width: 1.5vw;
+    height: 1.5vw;
+    aspect-ratio: 1/1;
+    position: absolute;
+    background-color: rgba(var(--secondary-color), 0.1);
+    z-index: -1;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+
+.subtaskSection .header .addIcon:hover::after,
+.createSubtask .buttonWrapper .confirmIcon:hover::after, 
+.createSubtask .buttonWrapper .cancelIcon:hover::after{
+    transform: scale(1);
+}
+
+.subtaskTable{
+    width: 100%;
+    min-height: 6vw;
+    background-color: rgba(var(--secondary-color), 0.1);
+    border-radius: 0.7vw;
+    padding: 1vh 1vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5vw;
+    flex: 1;
+    max-height: 10vw;
+}
+
+.subtaskTable .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+}
+
+.attribute{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    font-size: var(--h4-fontsize);
+}
+
+.attribute svg{
+    width: 1.5vw;
+    fill: none; 
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    cursor: pointer;
+}
+
+.workAttribute, .work{
+    width: 10vw;
+}
+
+.priorityAttribute, .priority{
+    width: 7vw;
+}
+
+.taskDetail .priority{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.assigneeAttribute, .subtask .assigneeEl{
+    width: 8vw;
+    /* background-color: blue; */
+}
+
+.subtask .assigneeEl{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+.subtask .assigneeEl .assigneeName,
+.createSubtask .assigneeName{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.statusAttribute, .status{
+    width: 6vw;
+}
+
+.subtaskList{
+    overflow: hidden;
+    overflow-y: auto;
+    /* background-color: red; */
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    font-size: var(--h3-fontsize);
+}
+
+.subtask{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(var(--secondary-color), 0);
+    cursor: pointer;
+    height: auto;
+    padding: 0.4vh 0;
+}
+
+.subtask:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.assignee{
+    font-size: var(--h4-fontsize);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    color: rgba(var(--tertiary-color), 0.7);
+    padding: 0.1vw 0.1vw;
+    border-radius: 0.5vw;
+    border: 0.1vw solid rgba(var(--tertiary-color),0.7);
+    background-color: rgba(var(--primary-color), 0);
+    width: auto;
+    padding: 0 0.5vw;
+    transition: 0.2s;
+    position: relative;
+    cursor: pointer;
+}
+
+.assignee svg{
+    stroke: rgba(var(--tertiary-color),0.7);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    fill: rgba(var(--tertiary-color),0.7);
+    width: 1.3vw;
+}
+
+.assignee:hover{
+    color: rgba(var(--tertiary-color), 1);
+    border: 0.1vw solid rgba(var(--tertiary-color),1);
+    background-color: rgba(var(--primary-color), 0.7);
+}
+
+.assignee:hover svg{
+    stroke: rgba(var(--tertiary-color),1);
+    fill: rgba(var(--tertiary-color),1);
+}
+
+.assignee svg.hide{
+    display: none
+}
+
+.assignee div{
+    width: 1.2vw;
+    height: 1.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: var(--p-fontsize);
+    background-color: var(--avatar);
+}
+
+.assignee div.hide{
+    display: none;
+}
+
+.createSubtask{
+    display: flex;
+    width: 100%;
+    background-color: rgba(var(--secondary-color), 0.1);
+    padding: 1vh 1vw;
+    border-radius: 0.7vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+}
+
+.createSubtask .createWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+    width: 100%;
+}
+
+.createSubtask input{
+    font-size: var(--h4-fontsize);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.1vw solid rgba(var(--tertiary-color),0.7);
+    width: 60%;
+}
+
+.createSubtask input:focus-within{
+    border-bottom: 0.1vw solid rgba(var(--tertiary-color),1);
+}
+
+.createSubtask svg{
+    width: 1vw;
+}
+
+.createSubtask .buttonWrapper{
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+.confirmIcon svg,
+.cancelIcon svg{
+    width: 1.3vw;
+}
+
+.commentInput{
+    min-height: 0;
+    flex: 1;
+    max-height: 100%;
+    width: 100%;
+    border-radius: 0.7vw;
+    border: 0.1vw solid rgba(var(--secondary-color), 0.3);
+    margin-top: 0.2vw;
+    overflow: hidden;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.textAreaWrapper{
+    min-height: 0;
+    width: 100%;
+    flex: 1;
+    padding-right: 0.2vw;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.commentInput .editor{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    font-size: var(--h4-fontsize);
+    padding: 1vh 1vw;
+    cursor: text;
+    overflow: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    user-select: text; 
+    white-space: pre-wrap; 
+    word-break: break-word;
+    position: relative;
+    z-index: 1;
+}
+
+.editor p{
+    margin: 0;
+    line-height: 1.2;
+    font-size: var(--h4-fontsize);
+}
+
+.editor p + p,
+.editor p + span, 
+.editor span + p,
+.activity .content p + p,
+.activity .content p + span,
+.activity .content span + p{
+    margin-top: 0.5vw;
+}
+
+.commentInput:has(.editor:focus-within){
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.placeHolder{
+    color: rgba(var(--tertiary-color), 1);
+    pointer-events: none;
+    font-size: var(--h4-fontsize);
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    user-select: none;
+    z-index: 2;
+}
+
+.editor:not(:empty) + .placeholder{
+    display: none;
+}
+
+.editor .file-preview{
+    background-color: rgba(var(--primary-color), 0.7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+    margin: 0.3vw 0;
+    padding: 0.5vw;
+    border-radius: 0.7vw;
+    position: relative;
+    user-select: auto;
+    max-width: 8vw;
+}
+
+.editor .file-preview img{
+    width: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.editor .file-preview .deleteFile{
+    position: absolute;
+    width: 1.2vw;
+    aspect-ratio: 1/1;
+    display: none;
+    top: -0.2vw;
+    right: -0.2vw;
+    background-color: rgba(var(--secondary-color), 0);
+    box-shadow: 0.1vw 0.1vw 0.5vw rgba(var(--secondary-color), 0.3);
+    border: none;
+    outline: none;
+    border-radius: 0.1vw;
+}
+
+.editor .file-preview:hover .deleteFile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--secondary-color), 0.3);
+}
+
+.editor .file-preview .deleteFile svg{
+    width: 1.5vw;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color-hover), 0.7);
+}
+
+.editor .file-preview .deleteFile::after{
+    display: none;
+}
+
+.commentInput .buttonWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: auto;
+    padding: 0.5vh 0.7vw;
+    gap: 0.5vw;
+}
+
+.commentInput .buttonWrapper .sendIcon svg{
+    fill: rgba(var(--tertiary-color),0);
+    stroke: rgba(var(--tertiary-color), 1);
+    transition: fill 0.1s, stroke 0.1s;
+}
+
+.commentInput .buttonWrapper .sendIcon:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+    fill: rgba(var(--tertiary-color),0.7);
+}
+
+.commentInput .buttonWrapper .attachmentIcon svg{
+    width: 1.3vw;
+    stroke-width: 13;
+    stroke: rgba(var(--tertiary-color), 1);
+    transition: stroke 0.2s;
+    flex-shrink: 0;
+}
+
+.commentInput .buttonWrapper .attachmentIcon:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.fileCardList{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1vh 1vw;
+    gap: 0.5vw;
+    width: calc(100% - 2vw);
+    overflow: hidden;
+    overflow-x: auto;
+    outline: none; 
+}
+
+.fileCardList.hide{
+    display: none;
+}
+
+.fileCard{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 10vw;
+    height: 3vw;
+    background-color: rgba(var(--primary-color), 0.7);
+    padding: 1vh 0.5vw;
+    border-radius: 0.5vw;
+    border: 0.15vw solid rgba(var(--tertiary-color), 0.5);
+    gap: 0.2vw;
+}
+
+.fileDetailWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.fileCard .fileName, 
+.fileCard .fileSize{
+    width: 5vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fileCard .fileIcon{
+    width: 2vw;
+}
+
+.fileCard .deleteFile svg{
+    width: 1vw;
+    stroke: rgba(var(--tertiary-color), 1);
+}
+
+.fileCard .deleteFile:hover svg{
+    stroke: rgba(var(--tertiary-color-hover), 1);
+}
+
+.members{
+    position: absolute;
+    z-index: 1000;
+    background-color: rgba(var(--primary-color), 1);
+    width: 10vw;
+    height: auto;
+    max-height: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    overflow-y: auto;
+    border-bottom-left-radius: 0.5vw;
+    border-bottom-right-radius: 0.5vw;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.1s ease-in-out;
+    opacity: 0;
+    box-shadow: 0.1vw 0.2vw 0.5vw rgba(var(--secondary-color), 0.2);
+}
+
+.members.show{
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.members .member{
+    padding: 0.5vh 0.5vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    cursor: pointer;
+    position: relative;
+}
+
+.members .member p{
+    width: calc(10vw - 0.5vw - 1.5vw);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.members .member::before,
+.detailWrapper2 .assigneeEl::before,
+.subtask .assigneeEl::before{
+    font-size: var(--p-fontsize);
+    position: relative;
+    content: var(--avatar);
+    width: 1vw;
+    height: 1vw;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--avatar-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailWrapper2 .assigneeEl::before,
+.subtask .assigneeEl::before,
+.assignee .state1 h4::before{
+    width: 1.3vw;
+    height: 1.3vw;
+}
+
+.members .member::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+}
+
+.members .member:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.parentTask{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.3vw;
+    width: 100%;
+}
+
+.parentTask #parentTaskTitle{
+    width: auto;
+    max-width: 10vw;
+    cursor: pointer;
+}
+
+.parentTask label{
+    cursor: pointer;
+    width: 1vw;
+    height: 1vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    align-self: flex-end;
+    margin-bottom: 0.2vw
+}
+
+.parentTask label svg{
+    width: 1vw;
+    height: 1vw;
+    stroke-width: 2;
+    fill: none;
+    stroke: rgba(var(--tertiary-color), 0.7);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.inlinePreview{
+    width: 70%;
+    height: 70%;
+    overflow: hidden;
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.inlinePreview::after{
+    display: none;
+}
+
+.inlinePreview .closeWrapper{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: transparent;
+}
+
+.inlinePreview .closeWrapper .closeBtn{
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    background-color: rgba(var(--primary-color), 1);
+}
+
+.inlinePreview span{
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inlinePreview img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

@@ -1,0 +1,475 @@
+.searchBar{
+    display: flex;
+    gap: 1vw;
+    width: max-content;
+    background-color: rgba(var(--primary-color), 0.5);
+    padding: 0.5vh 1.2vw 0.5vh 0.8vw;
+    border-radius: 100vw;
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0);
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+.searchBar::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 100vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.searchBar:focus-within{
+    background-color: rgba(var(--primary-color), 1);
+    box-shadow: 0.06vw 0.25vw 0.25vw rgba(0, 0, 0, 0.25);
+}
+
+.searchBar input{
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1.67vw;
+    outline: none;
+}
+
+.searchBar svg{
+    width: 1.2vw;
+    fill: none; 
+    stroke: rgba(var(--tertiary-color), 1);
+    stroke-width: 1.5;
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+}
+
+.taskArea{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2vw;
+    width: 100%;
+    min-height: 0;
+    flex-shrink: 0;
+    flex: 1;
+    overflow: auto;
+    overflow-y: visible;
+    padding-bottom: 0.39vw;
+    padding-right: 0.39vw;
+    /* background-color: blue; */
+}
+
+.taskPanel{
+    padding: 1vw 1.7vw 2vw 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5vw;
+    flex: 0 0 20vw;
+    height: auto;
+    max-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    transform: scale(1);
+    transform-origin: top center;
+    transition: transform 0.2s;
+}
+
+.taskListWrapper{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.3vw;
+}
+
+.taskList{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 0.5vw;
+    flex-shrink: 0;
+}
+
+.taskListWrapper::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.taskArea::-webkit-scrollbar{
+    height: 0.3vw;
+    margin-block: 50em;
+}
+
+.taskListWrapper::-webkit-scrollbar-track,
+.taskArea::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.taskListWrapper::-webkit-scrollbar-thumb,
+.taskArea::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.taskPanel:hover .taskListWrapper::-webkit-scrollbar-track,
+.taskArea:hover::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.taskPanel:hover .taskListWrapper::-webkit-scrollbar-thumb,
+.taskArea:hover::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.taskList .task{
+    width: 100%;
+    border-radius: 0.8vw;
+    height: auto;
+}
+
+
+.createTaskCategory{
+    padding: 0.7vw 0.7vw;
+    font-size: var(--h2-fontsize);
+    width: 2.9vw;
+    height: 2.9vw;
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    transition: background-color 0.2s, width 0.2s, height 0.2s, padding 0.2s;
+}
+
+.createTaskCategory .state1{
+    aspect-ratio: 1/1;
+    height: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createTaskCategory.active{
+    padding: 1vw 2vw;
+    min-width: 17vw;
+    height: 6.6vw;
+}
+
+.createTaskCategory .state2 form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.createTaskCategory .state2 input{
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+    font-size: var(--h3-fontsize);
+}
+
+.createTaskCategory .state2 .inputFooter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.createTaskCategory.panel::after{
+    border-radius: 0.5vw;
+}
+
+.createTaskCategory:has(.state1:hover){
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+.createTask{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.8vw;
+    border: 0.15vw solid rgba(var(--secondary-color), 0);
+    transition: border 0.2s, height 0.1s;
+    /* background-color: blue; */
+}
+
+.createTask.active{
+    background-color: rgba(var(--primary-color), 1);
+    border: 0.15vw solid rgba(var(--secondary-color), 1);
+    /* min-height: 6vw; */
+}
+
+.createTask .state1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 3vw;
+    background-color: rgba(var(--secondary-color), 0);
+    border-radius: 0.8vw;
+    padding: 1vh 1vw;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.createTask .state1:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.state1 svg, 
+.createTaskCategory svg{
+    fill: none; 
+    width: 1.5vw;
+    stroke-width: 1;
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.createTask .state2{
+    width: 100%;
+    height: auto;
+    border-radius: 0.8vw;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5vh 1vw 1vh;
+}
+
+.createTask .state1.hide, 
+.createTask .state2.hide,
+.createTaskCategory .state1.hide, 
+.createTaskCategory .state2.hide{
+    display: none;
+}
+
+.createTask .state2 p, 
+.createTaskCategory .state2 p{
+    font-size: var(--h4-fontsize); 
+}
+
+.createTask .state2 .inputWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 0.5vw;
+    gap: 1vw;
+}
+
+.createTask .state2 .inputWrapper input{
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    font-size: var(--h4-fontsize);
+}
+
+.createTask .state2 .inputWrapper p{
+    color: rgba(var(--tertiary-color), 1);
+    padding-right: 0.6vw;
+}
+
+.inputFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selectDueDate{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    cursor: pointer;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    padding: 1vh 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: -0.5vw;
+}
+
+.selectDueDate:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.selectDueDate .calanderIcon{
+    fill: none; 
+    width: 1.5vw;
+    padding: 0.1vw;
+    stroke-width: 10;
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.confirmBtn{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 2.4vw;
+    height: 2.4vw;
+    border: none;
+    border-radius: 0.2vw;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: 0.2s;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.confirmBtn:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.confirmBtn::before {
+    content: "";
+    position: absolute;
+    top: 1.2vw;
+    left: 1.2vw;
+    width: 0.4vw;
+    height: 1vw;
+    opacity: 1;
+    transform: translate(-50%, -60%) rotate(45deg);
+    border-right: 0.15vw solid rgba(var(--secondary-color), 1);
+    border-bottom: 0.15vw solid rgba(var(--secondary-color), 1);
+}
+
+.nothingHere{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--tertiary-color), 0.2);
+    font-size: var(--h4-fontsize);
+    padding: 1vh 1vw;
+    border-radius: 0.7vw;
+}
+
+.calendar{
+    position: absolute;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 0.7vw;
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.3);
+    transform: translateY(-1vw) scale(0);
+    transform-origin: top;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.calendar.show{
+    animation: calendarPop 0.25s forwards;
+    pointer-events: auto;
+}
+
+@keyframes calendarPop{
+    0%{
+        transform: translateY(-1vw) scale(0);
+    }
+    60%{
+        transform: translateY(0.1vw) scale(1.05);
+    }
+    100%{
+        transform: translateY(0vw) scale(1);
+    }
+}
+
+.calendarHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3vw;
+}
+
+.monthYear{
+    text-align: center;
+    width: 8vw;
+}
+
+.calendar button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    width: 1.5vw;
+    aspect-ratio: 1/1 ;
+    box-shadow: 0 0 0.1vw rgba(var(--secondary-color), 0.2);
+}
+
+.calendar svg{
+    width: 1vw;
+    fill: none;
+    stroke-width: 1.5; 
+    stroke: currentColor;
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.calendar .days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days .day{
+    text-align: center;
+    padding: 0.1vw;
+    color:rgba(var(--secondary-color), 0.4);
+    width: 2vw;
+}
+
+.calendar .dates{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.1vw;
+}
+
+.calendar .date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.3vw;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1.5vw;
+    aspect-ratio: 1/1;
+    transition: 0.2s;
+    background-color: rgba(var(--secondary-color), 0);
+}
+
+.calendar .date:hover{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.calendar .date.active{
+    background-color: rgba(var(--tertiary-color), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.date.inactive{
+    color: rgba(var(--secondary-color), 0.4);
+}
+
+.date.inactive:hover{
+    color: rgba(var(--tertiary-color), 0.4);
+}

@@ -1,0 +1,776 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4.6vh 5.2vw;
+    position: absolute;
+    background-color: transparent;
+    width: 100vw;
+    height: 14vh;
+    top: 0;
+}
+
+.logo{
+    position: relative;
+    height: 3.7vh;
+    z-index: 1;
+}
+
+.navbar a {
+    position: relative;
+    text-decoration: none;
+    color: rgba(var(--secondary-color), 1);
+    font-weight: 400;
+    font-size: 1.67vw;
+    z-index: 1;
+    line-height: 14vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+.nav-menu a::after{
+    content: '';
+    position: absolute;
+    width: 140%;
+    height: 40%;
+    background-color: transparent;
+    z-index: -1;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border-radius: 100vw;
+}
+
+.nav-menu a:hover::after{
+    background-color: rgba(var(--primary-color), 0.5);
+    border: 0.1vw solid white;
+    box-shadow: 0.06vw 0.2vw 0.6vw rgba(var(--secondary-color), 0.25);
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    list-style-type: none;
+    text-decoration: none;
+    gap: 2vw;
+    z-index: 1;
+    transition: transform 0.5s ease;
+    transform: translateX(0);
+}
+
+.nav-menu.show-profile{
+    transform: translate(-30vw);
+}
+
+.avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 3.6vw;
+    height: 3.6vw;
+    border-radius: 50%;
+    background-color: var(--logged-in-user-avatar);
+    border: 0.1vw solid black;
+    font-size: 1.3vw;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.5s ease;
+    transform: scale(1);
+}
+
+.userAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    
+    border-radius: 50%;
+    background-color: var(--teamleader-avatar);
+    border: 0.1vw solid black;
+    font-size: 1vw;
+}
+.invovledMember .userAvatar{
+    width: 1.3vw;
+    height: 1.3vw;
+}
+
+.userAvatar{
+    width: 2vw;
+    height: 2vw;
+}
+
+.avatar.show-profile{
+    transform: scale(1.2);
+}
+
+.navMenuProfile{
+    display: flex;
+    justify-content: start;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 140vw;
+    height: 100vh;
+    transition: transform 0.5s ease;
+    transform: translateX(0);
+    overflow-x: hidden;
+}
+
+.navMenuProfile.show-profile{
+    pointer-events: auto;
+    /* width: 140%; */
+    transform: translateX(-40vw);
+}
+
+.navbarShape{
+    position: relative;
+    width: 100vw;
+    height: 14vh;
+    background-color: rgba(var(--primary-color), 0.5);
+    flex-shrink: 0;
+    backdrop-filter: blur(1vw);
+    -webkit-backdrop-filter: blur(1vw);
+}
+
+.profileShape{
+    position: relative;
+    width: 40vw;
+    height: 100vh;
+    background-color: rgba(var(--primary-color), 0.5);
+    flex-shrink: 0;
+    margin-left: -0.1vw;
+    overflow-x: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.contentHolder{
+    border-top: 0.01vw solid white;
+    border-right: 0.01vw solid white;
+    background-color: transparent;
+    height: 86vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.content{
+    height: 100%;
+    gap: 2vw;
+    transition: background-color 0.5s ease;
+    background-color: rgba(var(--secondary-color), 0);
+    position: relative;
+}
+
+.content.show-profile{
+    background-color: rgba(var(--secondary-color), 0.25);
+}
+
+.wrapper1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw 0 7vw;
+    height: 14vh;
+    position: relative;
+    z-index: 1;
+}
+
+.settingIcon{
+    position: relative;
+    z-index: 1;
+    width: 2.6vw;
+    stroke: rgba(var(--tertiary-color), 1); 
+    stroke-width: 5%;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    transform: rotate(0);
+}
+
+.settingIcon.toggledSetting{
+    transform: rotate(90deg);
+}
+
+.wrapper2{
+    height: 86vh;
+    overflow: hidden;
+    position: relative;
+    width: 80vw;
+    display: flex;
+}
+
+.container1{
+    padding: 0 5vw 0 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    height: 100%;
+    width: 40vw;
+    overflow-y: auto;
+    transition: transform 0.5s ease;
+    transform: translateX(0);
+}
+
+.container1::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.container1::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.container1::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.container1::-webkit-scrollbar-track:hover{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.container1::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.sectionHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+
+.sectionToggleArrow{
+    position: relative;
+    width: 1.2vw;
+    stroke:rgba(var(--tertiary-color), 1); 
+    stroke-width: 15%;
+    stroke-linecap: round;
+    transition: transform 0.3s ease-out;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.sectionToggleArrow.hide{
+    transform: rotate(0deg);
+}
+
+.sectionContent-TOTW, .sectionContent-THTY, .sectionContent-IBX, .sectionContent-GH{
+    height: auto;
+    /*background-color:azure;*/
+    transition: height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.sectionContent-TOTW.hide, 
+.sectionContent-THTY.hide, 
+.sectionContent-IBX.hide, 
+.sectionContent-GH.hide,
+.sectionContent-TOTW.noMessage.hide, 
+.sectionContent-THTY.noMessage.hide, 
+.sectionContent-IBX.noMessage.hide{
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sectionContent-TOTW, .sectionContent-THTY{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vw;
+}
+
+.sectionContent-TOTW.noMessage, 
+.sectionContent-THTY.noMessage, 
+.sectionContent-IBX.noMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--secondary-color), 0.1);
+    padding: 2vw 2vw;
+    border-radius: 1vw;
+    color: rgba(var(--secondary-color), 0.6);
+}
+
+.taskOTW, 
+.taskHTY, 
+.notification, 
+.grindingHistory{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 0.5vw;
+}
+
+.task{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto; 
+    border-radius: 1vw;
+    padding: 1vh 1vw;
+    align-self: start;
+    gap: 0.5vh;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    flex-shrink: 0;
+}
+
+.task::after{
+    content: "";
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.task:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1); 
+}
+
+.taskTitle, .description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5vw;
+    height: 1.38vw;
+}
+
+.description sup{
+    vertical-align: top;
+}
+
+.taskTitle h4, 
+.taskTitle p,
+.description p{
+    flex: 1 1 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 6vw;
+}
+
+.userInfo h2{
+    width: 25vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description .dueDate{
+    text-align: right;
+}
+
+.priority{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.2vw
+}
+
+.fireIcon{
+    width: 1vw;
+    fill:#FF6723;
+    stroke: #FF1414;
+    stroke-width: 1.5;
+}
+
+.notif{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5vw;
+    padding: 0.5vw 0.5vw;
+    background-color: rgba(var(--tertiary-color), 0);
+    transition: background-color 0.2s;
+}
+
+.notif:hover{
+    background-color: rgba(var(--tertiary-color), 0.3);
+}
+
+.notif .info{
+    min-width: 0;
+    flex: 1;
+    /* background-color: blue; */
+    margin-top: 0.3vw;
+}
+
+.notif .buttonWrapper{
+    justify-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5vw;
+    flex: 0 0 auto;
+}
+
+.notif .buttonWrapper button{
+    border: none;
+    background-color: transparent;
+    font-size: var(--h5-fontsize);
+    padding: 0.5vh 0.5vw;
+    cursor: pointer;
+    border-radius: 0.5vw;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.2s;
+}
+
+.notif .buttonWrapper button::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.2s;
+    z-index: -1;
+}
+
+.notif .buttonWrapper button:hover::after{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.notif .buttonWrapper button:hover{
+    transform: scale(1.1);
+}
+
+.notif .buttonWrapper .accept{
+    background-color: var(--done-color);
+}
+
+.notif .buttonWrapper .reject{
+    background-color: rgba(var(--secondary-color), 0.4);
+}
+
+.container2{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+
+.container2 li{
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 0.25vw 5vw 0.25vw 2vw;
+    transition: text-decoration 0.3s, background-color 0.3s ease;
+    text-decoration: none;
+    position: relative;
+}
+
+.container2 h3{
+    width: max-content;
+    position: relative;
+}
+
+.container2 h3::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0.2vw;
+    background-color: rgba(var(--secondary-color), 1);
+    border-radius: 10vw;
+    height: 0.1vw;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.container2 li:hover h3::before{
+    transform: scaleX(1);
+}
+
+.container2 li:hover{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.container1.toggledSetting, 
+.container2.toggledSetting{
+    transform: translateX(-40vw);
+}
+
+dialog::backdrop{
+    background-color: rgba(var(--secondary-color), 0.25);
+}
+
+dialog:not([open]){
+    display: none;
+}
+
+dialog{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: 30vw;
+    border: none;
+    background-color: rgba(var(--primary-color), 1);
+    padding: 2.3vw;
+    border-radius: 1vw;
+    box-shadow: 0.06vw 0.25vw 0.6vw rgba(var(--secondary-color), 0.25);
+    overflow: hidden;
+    user-select: none;
+}
+
+dialog::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: linear-gradient(to top left, rgba(104, 104, 104, 0.25) 0%, rgba(255, 255, 255, 1) 84%);
+    border-radius: 1vw;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 0.1vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+dialog .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2vh;
+}
+
+dialog .name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2vw;
+}
+
+dialog .input-box{
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+}
+
+dialog .input-box img{
+    position: absolute;
+    right: 0;
+    width: 3.5vw;
+    cursor: pointer;
+    padding: 0 0.8vw;
+}
+
+dialog .form input{
+    font-family: "Instrument Serif", Serif;
+    font-weight: 400;
+    font-size: 1.2vw;
+    border-radius: 10px;
+    padding: 1vh 0.9vw;
+    border: none;
+    background-color: rgba(var(--input-color), 0.5);
+    width: 100%;
+    outline: none;
+}
+
+dialog .form input:focus-within{
+    background-color: rgba(var(--input-color), 1);
+}
+
+dialog select{
+    font-family: "Instrument Serif", Serif;
+    font-weight: 400;
+    font-size: 1.2vw;
+    border-radius: 10px;
+    padding: 1vh 0.9vw;
+    border: none;
+    background-color: rgba(var(--input-color), 1);
+    width: 100%;
+    outline: none;
+}
+
+dialog .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+dialog .closeBtn{
+    height: 100%;
+    font-size: 2vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    cursor: pointer;
+}
+
+dialog .closeBtn::after{
+    content:'';
+    position: absolute;
+    z-index: -1;
+    width: 1.8vw;
+    height: 1.8vw;
+    border-radius: 50%;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.3s;
+}
+
+dialog .closeBtn:hover::after{
+    background-color: rgba(var(--secondary-color), 0.25);
+}
+
+dialog .saveButton{
+    font-family: "Instrument Serif", Serif;
+    font-weight: 400;
+    font-size: 1.2vw;
+    width: auto;
+    align-self:last baseline;
+    background-color: rgba(var(--tertiary-color), 1);
+    border-radius: 0.5vw;
+    padding: 10px 27px;
+    border: none;
+    color: rgba(var(--primary-color), 1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+dialog .saveButton:hover{
+    background-color: rgba(var(--tertiary-color-hover), 1);
+}
+
+
+.messageDialog{
+    position: absolute;
+    top: 1.5vw;
+    right: 4.5vw;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 0.5vw;
+    user-select: none;
+    pointer-events: none;
+}
+
+.successfulMessage{
+    position: relative;
+    font-size: var(--h4-fontsize);
+    min-width: 5vw;
+    padding: 1vh 1vw;
+    background-color: rgba(var(--dialog-color-rgba), 1);
+    text-align: left;
+    border-radius: 0.7vw; 
+    transform: scale(0);
+    transform-origin: right center;
+    opacity: 1;
+}
+
+.successfulMessage.active{
+    animation: fadeOut 5s ease forwards;
+}
+
+@keyframes fadeOut{
+    0%{
+        transform: scale(0);
+        opacity: 1;
+    }
+    2.5%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    40%{
+        transform: scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.errorMessage{
+    color: var(--overdue-color);
+    display: none;
+    font-size: var(--p-fontsize);
+}
+
+.confirmationDialog{
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+    width: 20vw;
+    padding: 1.5vw;
+}
+
+.confirmationDialog .dialogHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.confirmationDialog .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 0.5vw;
+}
+
+.confirmationDialog .buttonWrapper button{
+    width: auto;
+    padding: 0.5vh 0.5vw;
+    border-radius: 0.5vw;
+    font-size: var(--h5-fontsize);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.confirmationDialog .buttonWrapper .cancel{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.confirmationDialog .buttonWrapper .cancel:hover{
+    background-color: rgba(var(--secondary-color), 0.5);
+    color: rgba(var(--primary-color), 1);
+}
+
+.confirmationDialog .buttonWrapper .confirm{
+    background-color: rgba(var(--tertiary-color), 0.8);
+}
+
+.confirmationDialog .buttonWrapper .confirm:hover{
+    background-color: rgba(var(--tertiary-color-hover), 1);
+    color: rgba(var(--primary-color), 1);
+}

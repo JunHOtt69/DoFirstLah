@@ -1,0 +1,831 @@
+.upperPanel, 
+.lowerPanel{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2vw;
+    width: 100%;
+}
+
+.upperPanel{
+    height: 40%;
+}
+
+.lowerPanel{
+    height: 55%;
+}
+
+.taskDueSoonPanel, 
+.projectDetailsPanel,
+.projectNotification, 
+.taskOverview,
+.workload,
+.goal{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.7vw;
+    padding: 1vw 1.7vw 2vw 2vw;
+}
+
+.projectDetailsPanel .projectContentWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    overflow: hidden;
+}
+
+.projectDetailsPanel .panelHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.projectDetailsPanel .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5vw;
+}
+
+.buttonWrapper .deleteProjectBtn,
+.buttonWrapper .edit{
+    width: 1.3vw;
+    height: 1.3vw;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonWrapper .deleteProjectBtn svg,
+.buttonWrapper .edit svg{
+    width: 1.3vw;
+    height: 1.3vw;
+    stroke-width: 1.5;
+    stroke: rgba(var(--tertiary-color), 0.5);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.buttonWrapper .deleteProjectBtn:hover svg{
+    stroke-width: 2;
+    stroke: var(--overdue-color);
+}
+
+.buttonWrapper .edit:hover svg{
+    stroke-width: 2;
+    stroke: rgba(var(--tertiary-color), 1);
+}
+
+.leaderWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: red; */
+    overflow: hidden;
+    height: 100%;
+}
+
+.leaderWrapper .leaderName{
+    width: 11vw;
+    /* background-color: blue; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--h4-fontsize);
+    text-align: center;
+    transform: translate(0, 1vw) scale(0);
+    transition: transform 0.2s;
+}
+
+.leaderWrapper .leaderAvatar{
+    width: 4.5vw;
+    height: 4.5vw;
+    aspect-ratio:  1/1;
+    border-radius: 50%;
+    background-color: var(--leader-avatar);
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--h2-fontsize);
+    transform: translate(0, -0.8vw) scale(1.3);
+    transition: transform 0.2s;
+}
+
+.leaderWrapper:has(.leaderAvatar:hover) .leaderName{
+    transform: translate(0, 0) scale(1);
+}
+
+.leaderWrapper .leaderAvatar:hover{
+    transform: translate(0, 0vw) scale(0.9);
+}
+
+.projectDetails{
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw;
+    overflow: hidden;
+    height: 100%;
+}
+
+.projectDetails .leftWrapper{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3vw;
+}
+
+.projectDetails .rightWrapper{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    /* background-color: red; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.projectDetails .projectDesc{
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+.projectDetails .projectName,
+.projectDetails .activeMember,
+.projectDetails .date,
+.projectDetails .remainingDays{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.taskDueSoonPanel{
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.taskDueSoonPanel .emptyMessage,
+.goal .taskDueWrapper .emptyMessage{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--secondary-color), 0.1);
+    border-radius: 1vw;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.projectNotification{
+    width: 35vw;
+}
+
+.taskDueWrapper, .notifWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.5vw;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-right: 0.3vw;
+}
+
+.taskDueWrapper::-webkit-scrollbar,
+.projectDesc::-webkit-scrollbar,
+.memberList::-webkit-scrollbar,
+.notifWrapper::-webkit-scrollbar{
+    width: 0.3vw;
+    margin-block: 50em;
+}
+
+.taskDueWrapper::-webkit-scrollbar-track,
+.projectDesc::-webkit-scrollbar-track,
+.memberList::-webkit-scrollbar-track,
+.notifWrapper::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 0);
+    border-radius: 1vw;
+}
+
+.taskDueWrapper::-webkit-scrollbar-thumb,
+.projectDesc::-webkit-scrollbar-thumb,
+.memberList::-webkit-scrollbar-thumb,
+.notifWrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 0.6);
+    border-radius: 1vw;
+}
+
+.taskDueSoonPanel:hover .taskDueWrapper::-webkit-scrollbar-track,
+.projectDesc:hover::-webkit-scrollbar-track,
+.memberList:hover::-webkit-scrollbar-track,
+.projectNotification:hover .notifWrapper::-webkit-scrollbar-track{
+    background-color: rgba(var(--primary-color-hover), 1);
+}
+
+.taskDueSoonPanel:hover .taskDueWrapper::-webkit-scrollbar-thumb,
+.projectDesc:hover::-webkit-scrollbar-thumb,
+.memberList:hover::-webkit-scrollbar-thumb,
+.projectNotification:hover .notifWrapper::-webkit-scrollbar-thumb{
+    background-color: rgba(var(--tertiary-color), 1);
+}
+
+.taskDueSoon{
+    width: 100%;
+    padding: 0.5vh 1vw;
+    border-radius: 10vw;
+    cursor: pointer;
+    position: relative;
+}
+
+.taskDueSoon::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--secondary-color), 0);
+    left: 0;
+    top: 0;
+    border-radius: 10vw;
+    transition: background-color 0.2s;
+}
+
+.taskDueSoon:hover::after{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.taskDueSoon h4{
+    flex: 1 1 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.invovledMember{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 3vw;
+}
+
+.invovledMember .userAvatar{
+    margin-left: -0.3vw;
+}
+
+.taskOverview{
+    flex: 0 0 28vw;
+}
+
+.workload{
+    flex: 1 1 25%;
+}
+
+.goal{
+    flex: 1 1 25%;
+}
+
+.taskOverviewWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+    height: 100%;
+    padding-bottom: 0.7vw;
+}
+
+.pieChart{
+    --pie-gradient: conic-gradient(#ccc 0deg 360deg);
+    background-color: transparent;
+    width: 50%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: relative;
+    z-index: 0;
+}
+
+.pieChart::after{
+    content: "";
+    position: absolute;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    background: var(--pie-gradient);
+    border-radius: 50%;
+    inset: 0;
+    mask-composite: exclude;
+    padding: 1.7vw;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.totalTask{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 0.4vw;
+}
+
+.totalTask h1{
+    margin-top: -0.5vw;
+}
+
+.labelIndicator{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.5vw;
+}
+
+.doneLabel, 
+.unassignedLabel, 
+.workingLabel, 
+.overdueLabel{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    padding-left: 1.3vw;
+    position: relative;
+}
+
+.doneLabel::after, 
+.unassignedLabel::after, 
+.workingLabel::after, 
+.overdueLabel::after{
+    content: '';
+    position: absolute;
+    width: 0.8vw;
+    height: 0.8vw;
+    left: 0;
+}
+
+.doneLabel::after{
+    background-color: var(--done-color);
+}
+
+.unassignedLabel::after{
+    background-color: rgba(var(--unassigned-color), 0.7);
+}
+
+.workingLabel::after{
+    background-color: var(--in-progress-color);
+}
+
+.overdueLabel::after{
+    background-color: var(--overdue-color);
+}
+
+.labelName{
+    width: 6.5vw;
+}
+
+.memberList{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.5vw;
+    margin-top: -0.4vw;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.workloadHeader{
+    padding-left: 2.1vw;
+    display: flex;
+    width: 100%;
+    gap: 1vw;
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 0.3);
+}
+
+.workloadHeader p{
+    text-align: left;
+}
+
+.workloadHeader p.workloadItem1{
+    width: 6vw;
+}
+
+.workloadHeader p.workloadItem2{
+    min-width: 0;
+    flex: 1;
+}
+
+.memberAvatar{
+    background-color: aqua;
+    flex: 0 0 1.1vw;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 0.9vw;
+}
+
+.member{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+    height: 1.2vw;
+}
+
+.member .memberName{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 0 0 6vw; 
+}
+
+.distributeWrapper{
+    display: flex;
+    gap: 0.2vw;
+    width: 100%;
+}
+
+.distribute{
+    height: 1.1vw;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(var(--tertiary-color), 0.5);
+}
+
+.distributePercentage{
+    width: 1.4vw;
+}
+
+.goalDescription h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.goalDescription .dueDateWrapper{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.2vw;
+    /* background-color: blue; */
+}
+
+.goalDescription .dueDateWrapper p{
+    padding-top: 0.5vh;
+}
+
+.goalDescription .calenderToggle{
+    padding: 0.5vh 0.5vw;
+    background-color: rgba(var(--primary-color), 0);
+    border-radius: 0.5vw;
+    cursor: pointer;
+    border: 0.1vw solid rgba(var(--secondary-color), 0);
+    transition: background-color 0.1s, border 0.1s, color 0.1s;
+    color: rgba(var(--tertiary-color), 1);
+    font-size: var(--p-fontsize);
+}
+
+.goalDescription .calenderToggle:hover,
+.goalDescription .calenderToggle.active{
+    background-color: rgba(var(--primary-color), 1);
+    border: 0.1vw solid rgba(var(--secondary-color), 0.5);
+    color: rgba(var(--secondary-color), 1);
+}
+
+.progressBar{
+    --bar-width: 1%;
+    margin-top: 0.4vw;
+    border-radius: 5vw;
+    height: 0.4vw;
+    width: 100%;
+    background-color: rgba(var(--secondary-color), 0.3);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.progressBar::before{
+    position: absolute;
+    content: var(--progression);
+    width: 1.5vw;
+    height: 1vw;
+    background-color: white;
+    bottom: 0.4vw;
+    left: var(--popupsPosition);
+    text-align: center;
+    border-radius: 0.2vw;
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.3);
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    transition-delay: 0.5s;
+}
+
+.progressBar:hover::before{
+    opacity: 1;
+}
+
+.progressBar::after{
+    content: '';
+    position: relative;
+    height: 100%;
+    width: var(--bar-width);
+    left: 0;
+    background-color: var(--done-color);
+    border-radius: 5vw;
+    box-shadow: inset -0.2vw -0.15vw 0.15vw rgba(var(--secondary-color), 0.2),
+    inset 0.1vw 0.1vw 0.1vw rgba(var(--unassigned-color), 0.7);
+    transition: width 0.8s ease;
+}
+
+.selectDueDate{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5vw;
+    cursor: pointer;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: background-color 0.2s;
+    padding: 1vh 0.5vw;
+    border-radius: 0.5vw;
+    margin-left: -0.5vw;
+}
+
+.selectDueDate:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.selectDueDate .calanderIcon{
+    fill: none; 
+    width: 1.5vw;
+    padding: 0.1vw;
+    stroke-width: 10;
+    stroke: rgba(var(--secondary-color), 1);
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.confirmBtn{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 2.4vw;
+    height: 2.4vw;
+    border: none;
+    border-radius: 0.2vw;
+    background-color: rgba(var(--secondary-color), 0);
+    transition: 0.2s;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.confirmBtn:hover{
+    background-color: rgba(var(--secondary-color), 0.1);
+}
+
+.confirmBtn::before {
+    content: "";
+    position: absolute;
+    top: 1.2vw;
+    left: 1.2vw;
+    width: 0.4vw;
+    height: 1vw;
+    opacity: 1;
+    transform: translate(-50%, -60%) rotate(45deg);
+    border-right: 0.15vw solid rgba(var(--secondary-color), 1);
+    border-bottom: 0.15vw solid rgba(var(--secondary-color), 1);
+}
+
+.calendar{
+    position: absolute;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    background-color: white;
+    border-radius: 0.7vw;
+    box-shadow: 0 0 0.5vw rgba(var(--secondary-color), 0.3);
+    transform: translateY(-1vw) scale(0);
+    transform-origin: top;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.calendar.show{
+    animation: calendarPop 0.25s forwards;
+    pointer-events: auto;
+}
+
+@keyframes calendarPop{
+    0%{
+        transform: translateY(-1vw) scale(0);
+    }
+    60%{
+        transform: translateY(0.1vw) scale(1.05);
+    }
+    100%{
+        transform: translateY(0vw) scale(1);
+    }
+}
+
+.calendarHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3vw;
+}
+
+.monthYear{
+    text-align: center;
+    width: 8vw;
+}
+
+.calendar button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    width: 1.5vw;
+    aspect-ratio: 1/1 ;
+    box-shadow: 0 0 0.1vw rgba(var(--secondary-color), 0.2);
+}
+
+.calendar svg{
+    width: 1vw;
+    fill: none;
+    stroke-width: 1.5; 
+    stroke: currentColor;
+    stroke-linecap: round; 
+    stroke-linejoin: round;
+}
+
+.calendar .days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.days .day{
+    text-align: center;
+    padding: 0.1vw;
+    color:rgba(var(--secondary-color), 0.4);
+    width: 2vw;
+}
+
+.calendar .dates{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.1vw;
+}
+
+.calendar .date{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.3vw;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1.5vw;
+    aspect-ratio: 1/1;
+    transition: 0.2s;
+    background-color: rgba(var(--secondary-color), 0);
+}
+
+.calendar .date:hover{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.calendar .date.active{
+    background-color: rgba(var(--tertiary-color), 1);
+    color: rgba(var(--primary-color), 1);
+}
+
+.date.inactive{
+    color: rgba(var(--secondary-color), 0.4);
+}
+
+.date.inactive:hover{
+    color: rgba(var(--tertiary-color), 0.4);
+}
+
+.editProjectDialog{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    outline: none;
+}
+
+.editProjectDialog .dialogHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vw;
+}
+
+.projectTitleEdit{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: var(--h4-fontsize);
+    border-bottom: 0.1vw solid rgba(var(--secondary-color), 1);
+    width: 100%;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
+
+.dialogContent{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.dialogContent textarea{
+    background-color: rgba(var(--tertiary-color), 0.2);
+    border: none;
+    border-radius: 0.7vw;
+    padding: 1vw;
+    font-size: var(--p-fontsize);
+    resize: none;
+    width: 100%;
+    height: 10vw;
+    outline: none;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.editProjectDialog .buttonWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    gap: 0.5vw;
+}
+
+.editProjectDialog .buttonWrapper button{
+    width: auto;
+    padding: 0.5vh 0.5vw;
+    border-radius: 0.5vw;
+    font-size: var(--h5-fontsize);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.editProjectDialog .buttonWrapper .cancel{
+    background-color: rgba(var(--secondary-color), 0.2);
+}
+
+.editProjectDialog .buttonWrapper .cancel:hover{
+    background-color: rgba(var(--secondary-color), 0.5);
+    color: rgba(var(--primary-color), 1);
+}
+
+.editProjectDialog .buttonWrapper .confirm{
+    background-color: rgba(var(--tertiary-color), 0.8);
+}
+
+.editProjectDialog .buttonWrapper .confirm:hover{
+    background-color: rgba(var(--tertiary-color-hover), 1);
+    color: rgba(var(--primary-color), 1);
+}
