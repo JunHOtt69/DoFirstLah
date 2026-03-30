@@ -61,6 +61,7 @@ Once the database is imported, you can launch the application by visiting the UR
 ## 📸 Application Preview
 
 ### 1. Authentication & Personal Space
+
 Login Page
 The entry point of the application featuring a clean, responsive design with "Remember Me" and password recovery options to ensure a smooth user experience.
 ![Login Preview](/images/login_preview.png)
@@ -72,6 +73,7 @@ A personalized command center where users can manage their individual schedule v
 ---
 
 2. Workspace Management
+
 My Hustle
 The project hub where users can view all ongoing individual and group projects, or instantly create and join new ones using invite codes.
 ![My Hustle Preview](/images/myHustle_preview.png)
@@ -83,6 +85,7 @@ A comprehensive overview of a specific project, displaying real-time task analyt
 ---
 
 3. Team & Task Operations
+
 Project Members
 A dedicated management interface to view involved members, handle pending invitations, and assign specific roles like Team Leader or Project Manager.
 ![Project Member Preview](/images/project_member_preview.png)
@@ -95,6 +98,7 @@ An interactive pop-up for deep-diving into specific tasks, allowing for subtask 
 ---
 
 4. Advanced Visualization
+
 Project Gantt Chart
 A high-level timeline view that allows team members to visualize project schedules and dynamically adjust task durations and deadlines.
 ![User Dashboard Preview](/images/project_gannt_chart_preview.png)
